@@ -23,7 +23,7 @@ const TESTIMONIALS = [
 
 export function Testimonials() {
   return (
-    <section aria-labelledby="testimonials-heading" className="bg-white py-20 md:py-28">
+    <section aria-labelledby="testimonials-heading" className="bg-cream py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <AnimatedSection className="text-center max-w-2xl mx-auto mb-14">
           <h2 id="testimonials-heading" className="font-display text-4xl md:text-5xl font-medium text-navy mb-4">
@@ -37,7 +37,7 @@ export function Testimonials() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {TESTIMONIALS.map(({ quote, name, context, initials }, i) => (
             <AnimatedSection key={name} delay={i * 0.1}>
-              <figure className="bg-cream rounded-xl p-7 h-full flex flex-col">
+              <figure className="bg-white rounded-xl shadow-card p-7 h-full flex flex-col">
                 {/* Stars */}
                 <div className="flex gap-0.5 mb-5" aria-label="5 out of 5 stars">
                   {[...Array(5)].map((_, j) => (

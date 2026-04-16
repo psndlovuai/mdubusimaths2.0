@@ -11,17 +11,17 @@ export function TutorSpotlight() {
             <div className="relative">
               {/* Avatar circle */}
               <div
-                className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-navy flex items-center justify-center"
+                className="w-72 h-72 md:w-[360px] md:h-[360px] rounded-full bg-navy flex items-center justify-center"
                 aria-label={`Photo of ${TUTOR_NAME}`}
               >
-                <span className="font-display text-7xl md:text-8xl font-medium text-gold">
+                <span className="font-display text-7xl md:text-9xl font-medium text-gold">
                   PS
                 </span>
               </div>
               {/* Decorative ring */}
               <div
                 aria-hidden="true"
-                className="absolute inset-0 rounded-full border-4 border-gold/20 scale-110"
+                className="absolute inset-0 rounded-full border-4 border-gold/30 scale-110"
               />
               {/* Green accent dot */}
               <div

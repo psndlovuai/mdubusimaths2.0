@@ -129,7 +129,7 @@ export function Pricing() {
         <AnimatedSection delay={0.3} className="mt-8 text-center">
           <p className="text-sm text-muted-foreground">
             All prices inclusive of VAT. Payment processed securely by Cal.com.{' '}
-            <Link href="/policies/refund" className="text-blue hover:underline">Refund Policy</Link>
+            <Link href="/policies/refund" className="text-navy hover:underline">Refund Policy</Link>
           </p>
         </AnimatedSection>
       </div>

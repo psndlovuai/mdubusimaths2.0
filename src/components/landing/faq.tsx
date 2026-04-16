@@ -28,7 +28,7 @@ const FAQS = [
   },
   {
     question: 'How do group sessions work?',
-    answer:   'Group sessions accommodate up to 6 students and run for 2 hours. They are ideal for peer learning and exam preparation on a specific topic. Each group session is focused on a set topic agreed upon at booking. At R800 per session, they offer excellent value for multiple students studying the same content.',
+    answer:   'Group sessions accommodate up to 6 students and run for 2 hours. They are ideal for peer learning and exam preparation on a specific topic. Each group session is focused on a set topic agreed upon at booking. At R250 per person, they offer excellent value for multiple students studying the same content.',
   },
 ]
 

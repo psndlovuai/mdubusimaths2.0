@@ -5,7 +5,7 @@ const COURSES = [
   {
     level:       'Grade 11',
     audience:    'For students in Grade 11 completing the NSC curriculum',
-    colour:      'bg-blue/10 text-blue border-blue/20',
+    colour:      'bg-navy/10 text-navy border-navy/20',
     topics: [
       'Algebra & Functions',
       'Euclidean Geometry',
