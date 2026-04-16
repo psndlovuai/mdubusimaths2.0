@@ -18,5 +18,13 @@ export const TUTOR_NAME     = 'PS Ndlovu'
 export const BRAND_NAME     = 'Mdubusi Mathematics'
 export const SUPPORT_EMAIL  = 'support@mdubusimaths.co.za'
 
+// ─── Social links ────────────────────────────────────────────────────────────
+export const SOCIAL_LINKS = {
+  whatsapp:  'https://wa.me/27000000000',           // replace with real number
+  facebook:  'https://facebook.com/mdubusimaths',
+  instagram: 'https://instagram.com/mdubusimaths',
+  linkedin:  'https://linkedin.com/company/mdubusimaths',
+}
+
 // ─── Cal.com ─────────────────────────────────────────────────────────────────
 export const CAL_USERNAME = process.env.CAL_USERNAME ?? 'ps-ndlovu'

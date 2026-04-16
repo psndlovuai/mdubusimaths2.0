@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { Menu, X, BookOpen } from 'lucide-react'
-import { BRAND_NAME } from '@/lib/constants'
 import { cn } from '@/lib/utils'
+import { Logo } from '@/components/layout/logo'
 
 const NAV_LINKS = [
   { href: '#home',     label: 'Home' },
@@ -38,12 +38,14 @@ export function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
+          className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
+          aria-label="Mdubusi Mathematics — home"
         >
-          <span aria-hidden="true" className={cn('block w-2.5 h-2.5 rotate-45 flex-shrink-0 transition-colors', scrolled ? 'bg-green' : 'bg-green')} />
-          <span className={cn('font-display text-xl font-medium leading-none transition-colors', scrolled ? 'text-navy' : 'text-white')}>
-            {BRAND_NAME}
-          </span>
+          <Logo
+            variant={scrolled ? 'on-light' : 'on-dark'}
+            priority
+            className="h-9 w-auto"
+          />
         </Link>
 
         {/* Desktop nav */}

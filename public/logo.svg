@@ -1,7 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" fill="none">
-  <!-- Placeholder logo — replace with final brand asset -->
-  <rect width="280" height="80" rx="8" fill="#1B3A6B"/>
-  <text x="20" y="52" font-family="Georgia,serif" font-size="28" font-weight="500" fill="#C9A84C">Mdubusi</text>
-  <text x="167" y="52" font-family="Georgia,serif" font-size="28" font-weight="500" fill="#ffffff">Maths</text>
-  <circle cx="260" cy="20" r="12" fill="#3AAA35"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 120" role="img" aria-label="Mdubusi Mathematics">
+  <title>Mdubusi Mathematics</title>
+  <!-- Mark -->
+  <g transform="translate(0,0)">
+    <circle cx="60" cy="60" r="56" fill="#1B3A6B"/>
+    <line x1="34" y1="30" x2="86" y2="30" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 30 90 L 30 40 L 60 74 L 90 40 L 90 90"
+          fill="none" stroke="#F8F4EA" stroke-width="8"
+          stroke-linejoin="miter" stroke-linecap="square" stroke-miterlimit="4"/>
+    <circle cx="60" cy="96" r="2.5" fill="#3AAA35"/>
+  </g>
+  <!-- Wordmark -->
+  <g transform="translate(140,0)" fill="#1B3A6B">
+    <text x="0" y="60"
+          font-family="'Cormorant Garamond', 'EB Garamond', Georgia, serif"
+          font-size="48" font-weight="500" letter-spacing="-0.5">Mdubusi</text>
+    <text x="2" y="86"
+          font-family="'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif"
+          font-size="14" font-weight="500" letter-spacing="4.5" fill="#2E6DB4">MATHEMATICS</text>
+    <!-- Thin gold underline echoing the mark's bar -->
+    <line x1="2" y1="96" x2="156" y2="96" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+  </g>
 </svg>

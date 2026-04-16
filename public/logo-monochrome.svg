@@ -1,4 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" fill="none">
-  <!-- Placeholder monochrome logo (white version for dark backgrounds) — replace with final brand asset -->
-  <text x="20" y="52" font-family="Georgia,serif" font-size="28" font-weight="500" fill="#ffffff">Mdubusi Maths</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 120" role="img" aria-label="Mdubusi Mathematics">
+  <title>Mdubusi Mathematics</title>
+  <!-- Single-colour variant for dark backgrounds. All shapes use currentColor
+       so you can recolour with CSS: .logo { color: white; } or color: #1B3A6B -->
+  <g transform="translate(0,0)" fill="none" stroke="currentColor">
+    <circle cx="60" cy="60" r="56" stroke-width="4" fill="none"/>
+    <line x1="34" y1="30" x2="86" y2="30" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 30 90 L 30 40 L 60 74 L 90 40 L 90 90"
+          stroke-width="8" stroke-linejoin="miter"
+          stroke-linecap="square" stroke-miterlimit="4"/>
+    <circle cx="60" cy="96" r="2.5" fill="currentColor" stroke="none"/>
+  </g>
+  <g transform="translate(140,0)" fill="currentColor" stroke="none">
+    <text x="0" y="60"
+          font-family="'Cormorant Garamond', 'EB Garamond', Georgia, serif"
+          font-size="48" font-weight="500" letter-spacing="-0.5">Mdubusi</text>
+    <text x="2" y="86"
+          font-family="'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif"
+          font-size="14" font-weight="500" letter-spacing="4.5">MATHEMATICS</text>
+    <line x1="2" y1="96" x2="156" y2="96" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+  </g>
 </svg>
