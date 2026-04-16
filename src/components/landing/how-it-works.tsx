@@ -20,7 +20,7 @@ const STEPS = [
 
 export function HowItWorks() {
   return (
-    <section aria-labelledby="how-it-works-heading" className="bg-white py-20 md:py-28">
+    <section aria-labelledby="how-it-works-heading" className="bg-cream py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <AnimatedSection className="text-center max-w-2xl mx-auto mb-14">
           <h2 id="how-it-works-heading" className="font-display text-4xl md:text-5xl font-medium text-navy mb-4">

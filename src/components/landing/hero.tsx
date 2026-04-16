@@ -44,14 +44,12 @@ export function Hero() {
       aria-label="Hero"
       className="relative overflow-hidden bg-navy-dark"
     >
-      {/* Subtle decorative maths symbols */}
+      {/* Subtle decorative maths symbols — no circle outlines */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none select-none overflow-hidden">
         <span className="absolute top-[12%] right-[6%]  text-white/4 font-mono text-5xl lg:text-7xl font-light rotate-[6deg]">∑</span>
         <span className="absolute bottom-[20%] left-[3%]  text-white/4 font-mono text-3xl lg:text-5xl font-light rotate-[-4deg]">π²</span>
         <span className="absolute top-[55%] right-[4%]  text-white/3 font-mono text-4xl lg:text-6xl font-light rotate-[10deg]">√x</span>
         <span className="absolute top-[35%] left-[2%]  text-white/3 font-mono text-2xl font-light rotate-[4deg]">Δ</span>
-        <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full border border-white/5" />
-        <div className="absolute bottom-0 left-1/3 w-96 h-96 rounded-full border border-white/4" />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-20 md:py-28">

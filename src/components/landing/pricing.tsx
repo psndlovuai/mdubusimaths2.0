@@ -59,7 +59,7 @@ const PLANS = [
 
 export function Pricing() {
   return (
-    <section id="pricing" aria-labelledby="pricing-heading" className="bg-white py-20 md:py-28">
+    <section id="pricing" aria-labelledby="pricing-heading" className="bg-cream py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <AnimatedSection className="text-center max-w-2xl mx-auto mb-14">
           <h2 id="pricing-heading" className="font-display text-4xl md:text-5xl font-medium text-navy mb-4">
