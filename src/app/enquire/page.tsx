@@ -101,8 +101,8 @@ export default function EnquirePage() {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground mb-0.5">WhatsApp</p>
-                      <a href="https://wa.me/27000000000" className="text-navy font-medium text-sm hover:underline">
-                        +27 00 000 0000
+                      <a href="https://wa.me/27833819069" className="text-navy font-medium text-sm hover:underline">
+                        +27 83 381 9069
                       </a>
                     </div>
                   </li>

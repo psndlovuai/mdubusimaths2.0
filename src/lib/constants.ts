@@ -20,10 +20,10 @@ export const SUPPORT_EMAIL  = 'support@mdubusimaths.co.za'
 
 // ─── Social links ────────────────────────────────────────────────────────────
 export const SOCIAL_LINKS = {
-  whatsapp:  'https://wa.me/27000000000',           // replace with real number
-  facebook:  'https://facebook.com/mdubusimaths',
-  instagram: 'https://instagram.com/mdubusimaths',
-  linkedin:  'https://linkedin.com/company/mdubusimaths',
+  whatsapp:  'https://wa.me/27833819069',
+  instagram: 'https://www.instagram.com/mdubusimaths?igsh=NGtxd2Q3MTB5b3Fk&utm_source=qr',
+  tiktok:    'https://www.tiktok.com/@mdubusimaths',
+  linkedin:  'https://www.linkedin.com/in/phelelani-siboniso-ndlovu-b2346320a/',
 }
 
 // ─── Cal.com ─────────────────────────────────────────────────────────────────
