@@ -30,7 +30,7 @@ const NAV_LINKS: NavLink[] = [
   {
     href:  '#pricing',
     label: 'Pricing',
-    badge: { text: 'From R350', color: 'bg-green/25 text-green' },
+    badge: { text: 'From R150', color: 'bg-green/25 text-green' },
   },
   {
     href:   '/enquire',

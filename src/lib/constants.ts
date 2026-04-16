@@ -1,7 +1,7 @@
 // ─── Session pricing (ZAR cents) ─────────────────────────────────────────────
 // These are the source-of-truth prices. Never hardcode prices in UI components.
 export const PRICES: Record<string, number> = {
-  once_off: 35000,   // R350.00
+  once_off: 15000,   // R150.00
   monthly:  150000,  // R1,500.00
   group:    25000,   // R250.00
 }
