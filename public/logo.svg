@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" fill="none">
+  <!-- Placeholder logo — replace with final brand asset -->
+  <rect width="280" height="80" rx="8" fill="#1B3A6B"/>
+  <text x="20" y="52" font-family="Georgia,serif" font-size="28" font-weight="500" fill="#C9A84C">Mdubusi</text>
+  <text x="167" y="52" font-family="Georgia,serif" font-size="28" font-weight="500" fill="#ffffff">Maths</text>
+  <circle cx="260" cy="20" r="12" fill="#3AAA35"/>
+</svg>

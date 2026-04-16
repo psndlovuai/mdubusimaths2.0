@@ -1,0 +1,128 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── User (covers both students and the tutor) ───────────────────────────────
+model User {
+  id             String        @id @default(cuid())
+  email          String        @unique
+  emailVerified  DateTime?
+  password       String?       // bcrypt hash; null for OAuth-only users
+  firstName      String
+  lastName       String
+  role           Role          @default(STUDENT)
+  academicLevel  String?       // grade_11, grade_12, undergraduate, etc.
+  phone          String?
+  avatarUrl      String?
+  marketingOptin Boolean       @default(false)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  sessions      Session[]
+  accounts      Account[]       // NextAuth OAuth accounts
+  sessions_auth Session_Auth[]  // NextAuth sessions
+
+  @@map("users")
+}
+
+enum Role {
+  STUDENT
+  TUTOR
+}
+
+// ─── NextAuth Account (OAuth providers) ─────────────────────────────────────
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+// ─── NextAuth Session ────────────────────────────────────────────────────────
+model Session_Auth {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("auth_sessions")
+}
+
+// ─── NextAuth Verification Token ────────────────────────────────────────────
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ─── Session (tutoring session) ───────────────────────────────────────────────
+model Session {
+  id            String        @id @default(cuid())
+  studentId     String
+  sessionType   SessionType
+  subject       String
+  topic         String?
+  scheduledAt   DateTime
+  durationMin   Int           @default(60)
+  amountCents   Int           // ZAR cents
+  currency      String        @default("ZAR")
+  status        SessionStatus @default(CONFIRMED)
+  calBookingUid String?       @unique // Cal.com booking UID — idempotency key
+  notes         String?       // tutor can add notes
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  student User @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@index([studentId])
+  @@index([status])
+  @@index([scheduledAt])
+  @@map("sessions")
+}
+
+enum SessionType {
+  ONCE_OFF
+  MONTHLY
+  GROUP
+}
+
+enum SessionStatus {
+  CONFIRMED  // Cal.com fires webhook only after payment — directly confirmed
+  CANCELLED
+  COMPLETED
+}
+
+// ─── Email Log ───────────────────────────────────────────────────────────────
+model EmailLog {
+  id        String   @id @default(cuid())
+  recipient String
+  template  String
+  resendId  String?
+  status    String   @default("sent") // sent | failed
+  error     String?
+  sentAt    DateTime @default(now())
+
+  @@map("email_log")
+}
