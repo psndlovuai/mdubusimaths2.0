@@ -3,7 +3,7 @@
 export const PRICES: Record<string, number> = {
   meet_greet: 0,       // Free — 15 min introduction call
   once_off:   15000,   // R150 — 60 min one-on-one / exam prep
-  group:      25000,   // R250 per person — 2 hr group session
+  group:      40000,   // R400 per person — 2 hr group session (4–10 people)
   monthly:    150000,  // R1,500 — monthly package
 }
 

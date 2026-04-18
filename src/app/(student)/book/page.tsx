@@ -42,7 +42,7 @@ const SESSION_TYPES = [
   {
     value:       'group',
     label:       'Group Session',
-    description: '2-hour session with other students (up to 6)',
+    description: '2-hour session with other students (4–10 people)',
     badge:       'Per person',
     icon:        Users,
     priceKey:    'group',

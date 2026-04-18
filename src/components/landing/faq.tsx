@@ -16,7 +16,7 @@ const FAQS = [
   },
   {
     question: 'What session types are available?',
-    answer:   'We offer four options: a free 15-minute Meet & Greet; a 60-minute once-off session (R150) — perfect for exam prep or a specific topic; a 2-hour group session (R250 per person) with up to 6 students on a shared topic; and a monthly package (R1,500) with unlimited 60-minute sessions and priority scheduling.',
+    answer:   'We offer four options: a free 15-minute Meet & Greet; a 60-minute once-off session (R150) — perfect for exam prep or a specific topic; a 2-hour group session (R400 per person) with 4–10 students on a shared topic; and a monthly package (R1,500) with unlimited 60-minute sessions and priority scheduling.',
   },
   {
     question: 'How does payment work?',
@@ -32,7 +32,7 @@ const FAQS = [
   },
   {
     question: 'How do group sessions work?',
-    answer:   'Group sessions run for 2 hours online and accommodate up to 6 students. The topic is agreed upon at booking so everyone arrives prepared. At R250 per person, they\'re excellent value — great for study groups or friends tackling the same exam.',
+    answer:   'Group sessions run for 2 hours online and accommodate 4–10 students. The topic is agreed upon at booking so everyone arrives prepared. At R400 per person, they are excellent value — great for study groups or friends tackling the same exam.',
   },
 ]
 

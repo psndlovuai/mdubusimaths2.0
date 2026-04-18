@@ -11,7 +11,7 @@ const SERVICES = [
   {
     icon:        Users,
     title:       'Group Sessions',
-    description: 'Collaborative small-group tutoring where students learn from each other while receiving expert guidance and support. Up to 6 students.',
+    description: 'Collaborative small-group tutoring where students learn from each other while receiving expert guidance and support. 4–10 students per group.',
     delay:       0.1,
   },
   {
