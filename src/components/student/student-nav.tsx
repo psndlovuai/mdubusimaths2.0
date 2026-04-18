@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { signOut } from 'next-auth/react'
 import { Menu, X, BookOpen, LayoutDashboard, Clock, User, LogOut } from 'lucide-react'
-import { BRAND_NAME } from '@/lib/constants'
+import { Logo } from '@/components/layout/logo'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
@@ -30,12 +30,9 @@ export function StudentNav({ firstName }: StudentNavProps) {
           {/* Logo */}
           <Link
             href="/dashboard"
-            className="flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
+            className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
           >
-            <span aria-hidden="true" className="block w-2.5 h-2.5 bg-green rotate-45 flex-shrink-0" />
-            <span className="font-display text-lg font-medium text-navy leading-none hidden sm:block">
-              {BRAND_NAME}
-            </span>
+            <Logo variant="on-light" className="h-8 w-auto" />
           </Link>
 
           {/* Desktop nav */}

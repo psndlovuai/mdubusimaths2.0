@@ -6,7 +6,7 @@ import { signOut } from 'next-auth/react'
 import {
   LayoutDashboard, CalendarDays, Users, Settings, LogOut,
 } from 'lucide-react'
-import { BRAND_NAME } from '@/lib/constants'
+import { Logo } from '@/components/layout/logo'
 import { cn } from '@/lib/utils'
 
 const NAV_ITEMS = [
@@ -47,13 +47,8 @@ export function TutorNav() {
       >
         {/* Logo */}
         <div className="mb-8 px-3">
-          <div className="flex items-center gap-2 mb-1">
-            <span aria-hidden="true" className="block w-2.5 h-2.5 bg-green rotate-45 flex-shrink-0" />
-            <span className="font-display text-base font-medium text-white leading-none">
-              {BRAND_NAME}
-            </span>
-          </div>
-          <p className="text-xs text-white/40 pl-4">Tutor Portal</p>
+          <Logo variant="on-dark" className="h-8 w-auto mb-1" />
+          <p className="text-xs text-white/40 mt-1">Tutor Portal</p>
         </div>
 
         {/* Nav links */}
