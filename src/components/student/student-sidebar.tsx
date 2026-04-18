@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { signOut } from 'next-auth/react'
+import Image from 'next/image'
 import {
   LayoutDashboard, Clock, BookOpen, MessageCircle,
   User, Settings, LogOut, Menu, X, ChevronRight,
@@ -20,9 +21,9 @@ const NAV_ITEMS = [
   { href: '/settings',  label: 'Settings',    icon: Settings },
 ]
 
-interface Props { firstName: string }
+interface Props { firstName: string; avatarUrl?: string | null; initials?: string }
 
-export function StudentSidebar({ firstName }: Props) {
+export function StudentSidebar({ firstName, avatarUrl, initials }: Props) {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -38,9 +39,18 @@ export function StudentSidebar({ firstName }: Props) {
       </div>
 
       {/* User greeting */}
-      <div className="px-5 py-4 border-b border-border/60">
-        <p className="text-xs text-muted-foreground">Signed in as</p>
-        <p className="font-semibold text-ink text-sm mt-0.5">{firstName}</p>
+      <div className="px-5 py-4 border-b border-border/60 flex items-center gap-3">
+        <div className="w-9 h-9 rounded-full overflow-hidden bg-navy flex items-center justify-center flex-shrink-0 ring-2 ring-gold/30">
+          {avatarUrl ? (
+            <Image src={avatarUrl} alt={firstName} width={36} height={36} className="object-cover w-full h-full" />
+          ) : (
+            <span className="text-xs font-bold text-white select-none">{initials ?? firstName.charAt(0).toUpperCase()}</span>
+          )}
+        </div>
+        <div className="min-w-0">
+          <p className="text-xs text-muted-foreground leading-none mb-0.5">Hi there,</p>
+          <p className="font-semibold text-ink text-sm truncate">{firstName}</p>
+        </div>
       </div>
 
       {/* Nav items */}

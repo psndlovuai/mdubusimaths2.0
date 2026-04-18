@@ -3,6 +3,7 @@ import { profileCompleteness } from '@/lib/profile-utils'
 import { auth } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { ProfileForm } from '@/components/student/profile-form'
+import { AvatarUpload } from '@/components/student/avatar-upload'
 import { CheckCircle2, AlertCircle, FileText, ShieldCheck, RefreshCw, ExternalLink, Info } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -117,6 +118,13 @@ export default async function ProfilePage() {
       {/* Profile form */}
       <div className="bg-white rounded-xl shadow-card p-6 sm:p-8">
         <h2 className="font-semibold text-ink mb-5">Personal & Academic Details</h2>
+        {/* Avatar */}
+        <div className="mb-6 pb-6 border-b border-border">
+          <AvatarUpload
+            currentUrl={profile.avatarUrl}
+            initials={`${profile.firstName.charAt(0)}${profile.lastName.charAt(0)}`.toUpperCase()}
+          />
+        </div>
         <ProfileForm defaultValues={profile} />
       </div>
 

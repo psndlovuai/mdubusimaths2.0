@@ -45,6 +45,7 @@ export interface MyProfileData {
   whatsapp:      string | null
   bio:           string | null
   marketingOptin: boolean
+  avatarUrl:     string | null
 }
 
 export async function getMyProfile(): Promise<MyProfileData | null> {
@@ -66,6 +67,7 @@ export async function getMyProfile(): Promise<MyProfileData | null> {
       whatsapp:      true,
       bio:           true,
       marketingOptin: true,
+      avatarUrl:     true,
     },
   })
   return user ?? null

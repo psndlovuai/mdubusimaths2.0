@@ -1,6 +1,7 @@
 import { auth } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { StudentSidebar } from '@/components/student/student-sidebar'
+import { prisma } from '@/infrastructure/prisma/client'
 
 export default async function StudentLayout({ children }: { children: React.ReactNode }) {
   const session = await auth()
@@ -8,9 +9,17 @@ export default async function StudentLayout({ children }: { children: React.Reac
 
   const firstName = session.user.name?.split(' ')[0] ?? 'Student'
 
+  // Fetch avatar from DB (not in JWT token)
+  const user = await prisma.user.findUnique({
+    where:  { id: session.user.id },
+    select: { avatarUrl: true, firstName: true, lastName: true },
+  })
+  const avatarUrl = user?.avatarUrl ?? null
+  const initials  = `${user?.firstName?.charAt(0) ?? ''}${user?.lastName?.charAt(0) ?? ''}`.toUpperCase() || firstName.charAt(0).toUpperCase()
+
   return (
     <div className="min-h-screen bg-cream">
-      <StudentSidebar firstName={firstName} />
+      <StudentSidebar firstName={firstName} avatarUrl={avatarUrl} initials={initials} />
 
       {/* Offset for desktop sidebar */}
       <div className="lg:pl-60">
