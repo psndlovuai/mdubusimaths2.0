@@ -245,7 +245,7 @@ function StepCalendar({ sessionType, subject, topic, userName, userEmail, onBack
   onBack:      () => void
 }) {
   const slug    = TYPE_SLUGS[sessionType] ?? 'once-off-60min'
-  const calUser = process.env.NEXT_PUBLIC_CAL_USERNAME ?? 'ps-ndlovu'
+  const calUser = process.env.NEXT_PUBLIC_CAL_USERNAME ?? 'ps.ndlovu_mdubusimaths'
   const calLink = `${calUser}/${slug}`
   const isFree  = sessionType === 'meet_greet'
 

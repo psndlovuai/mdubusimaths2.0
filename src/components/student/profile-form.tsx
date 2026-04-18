@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { toast } from 'sonner'
-import { Loader2, Check, User, GraduationCap, Phone, Bell } from 'lucide-react'
+import { Loader2, Check, User, GraduationCap, Phone, Bell, ChevronDown } from 'lucide-react'
 import { updateProfile } from '@/app/actions/profile'
 import type { MyProfileData } from '@/app/actions/profile'
 
@@ -178,16 +178,19 @@ export function ProfileForm({ defaultValues }: ProfileFormProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label htmlFor="academicLevel" className="block text-sm font-medium text-ink mb-1.5">Academic level</label>
-              <select
-                id="academicLevel"
-                className="w-full border border-border rounded-xl px-4 py-3 text-sm text-ink bg-white focus:outline-none focus:ring-2 focus:ring-gold min-h-[44px] appearance-none"
-                {...register('academicLevel')}
-              >
-                <option value="">Select your level</option>
-                {ACADEMIC_LEVELS.map(l => (
-                  <option key={l.value} value={l.value}>{l.label}</option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  id="academicLevel"
+                  className="w-full border border-border rounded-xl px-4 py-3 pr-10 text-sm text-ink bg-white focus:outline-none focus:ring-2 focus:ring-gold min-h-[44px] appearance-none"
+                  {...register('academicLevel')}
+                >
+                  <option value="">Select your level</option>
+                  {ACADEMIC_LEVELS.map(l => (
+                    <option key={l.value} value={l.value}>{l.label}</option>
+                  ))}
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              </div>
             </div>
             <div>
               <label htmlFor="school" className="block text-sm font-medium text-ink mb-1.5">

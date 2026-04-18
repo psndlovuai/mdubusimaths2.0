@@ -37,4 +37,4 @@ export const SOCIAL_LINKS = {
 }
 
 // ─── Cal.com ─────────────────────────────────────────────────────────────────
-export const CAL_USERNAME = process.env.CAL_USERNAME ?? 'ps-ndlovu'
+export const CAL_USERNAME = process.env.CAL_USERNAME ?? 'ps.ndlovu_mdubusimaths'
