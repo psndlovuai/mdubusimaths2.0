@@ -13,8 +13,8 @@ model User {
   email          String        @unique
   emailVerified  DateTime?
   password       String?       // bcrypt hash; null for OAuth-only users
-  firstName      String
-  lastName       String
+  firstName      String        @default("")
+  lastName       String        @default("")
   role           Role          @default(STUDENT)
   academicLevel  String?       // grade_11, grade_12, undergraduate, etc.
   phone          String?

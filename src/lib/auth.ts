@@ -1,5 +1,8 @@
 import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
+import Apple from 'next-auth/providers/apple'
+import Resend from 'next-auth/providers/resend'
+import { PrismaAdapter } from '@auth/prisma-adapter'
 import { prisma } from '@/infrastructure/prisma/client'
 import bcrypt from 'bcryptjs'
 import { z } from 'zod'
@@ -12,10 +15,22 @@ const loginSchema = z.object({
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
-  // No PrismaAdapter — we use JWT sessions so no DB session storage needed.
-  // Prisma is only called inside authorize() to look up the user.
+  adapter: PrismaAdapter(prisma),
 
   providers: [
+    // ── Apple Sign In ──────────────────────────────────────────────────────
+    Apple({
+      clientId:     process.env.AUTH_APPLE_ID     ?? '',
+      clientSecret: process.env.AUTH_APPLE_SECRET ?? '',
+    }),
+
+    // ── Email magic link via Resend ───────────────────────────────────────
+    Resend({
+      apiKey: process.env.RESEND_API_KEY,
+      from:   process.env.RESEND_FROM_EMAIL ?? 'hello@mdubusimaths.com',
+    }),
+
+    // ── Email + password ──────────────────────────────────────────────────
     Credentials({
       name: 'credentials',
       credentials: {
@@ -37,10 +52,24 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         return {
           id:    user.id,
           email: user.email,
-          name:  `${user.firstName} ${user.lastName}`,
+          name:  `${user.firstName} ${user.lastName}`.trim(),
           role:  user.role,
         }
       },
     }),
   ],
+
+  events: {
+    // Assign STUDENT role + parse name when a new OAuth/email user is created
+    async createUser({ user }) {
+      if (!user.id) return
+      const nameParts  = (user.name ?? '').split(' ')
+      const firstName  = nameParts[0]  ?? ''
+      const lastName   = nameParts.slice(1).join(' ')
+      await prisma.user.update({
+        where: { id: user.id },
+        data:  { role: 'STUDENT', firstName, lastName },
+      })
+    },
+  },
 })
