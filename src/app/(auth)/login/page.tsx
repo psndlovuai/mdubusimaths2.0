@@ -61,16 +61,25 @@ export default function LoginPage() {
         Sign in to your student account
       </p>
 
-      {/* Apple Sign In */}
-      <button
-        type="button"
-        onClick={() => signIn('apple', { callbackUrl: '/dashboard' })}
-        className="w-full flex items-center justify-center gap-3 bg-black hover:bg-zinc-800 text-white rounded-xl py-3 text-sm font-medium min-h-[44px] mb-3 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-      >
-        <svg width="16" height="16" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true">
-          <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 376.7 0 228.3 0 148.4 0 62.2 57.8 14.1 114.3 14.1c71.6 0 121.1 46.8 164 46.8 40.8 0 103.1-49.7 179.7-49.7 68.7 0 173.8 40.5 220.5 129.2zM470.7 61.4c16-20.4 33.6-44.2 33.6-73.1 0-3.8-.6-7.7-1.3-11.5-31.4 1.3-69.5 21.1-92.7 46.8-15.4 16.7-35.2 44.2-35.2 73.7 0 4.5.6 9 1.3 11.5 2.6.6 5.8 1.3 9.0 1.3 28.8 0 63.5-19.2 85.3-48.7z"/>
+      {/* Apple */}
+      <button type="button" onClick={() => signIn('apple', { callbackUrl: '/dashboard' })}
+        className="w-full flex items-center justify-center gap-3 bg-black hover:bg-zinc-800 text-white rounded-xl py-3 text-sm font-medium min-h-[44px] mb-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold">
+        <svg width="17" height="20" viewBox="0 0 17 20" fill="currentColor" aria-hidden="true">
+          <path d="M14.28 10.73c-.02-2.27 1.85-3.36 1.93-3.42-1.05-1.54-2.69-1.75-3.27-1.77-1.39-.14-2.72.82-3.43.82-.71 0-1.8-.8-2.96-.78-1.52.02-2.92.88-3.7 2.23C1.04 10.51 2.14 15 3.9 17.27c.88 1.27 1.92 2.68 3.29 2.63 1.32-.05 1.82-.85 3.42-.85 1.59 0 2.05.85 3.44.83 1.42-.02 2.32-1.29 3.19-2.56.99-1.45 1.4-2.86 1.42-2.93-.03-.02-2.74-1.05-2.76-4.16h-.62ZM11.94 3.56C12.67 2.67 13.16 1.44 13 .2c-1.06.04-2.34.71-3.1 1.59-.68.78-1.28 2.03-1.12 3.22 1.18.09 2.38-.6 3.16-1.45Z"/>
         </svg>
         Continue with Apple
+      </button>
+
+      {/* Google */}
+      <button type="button" onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
+        className="w-full flex items-center justify-center gap-3 border border-border bg-white hover:bg-cream text-ink rounded-xl py-3 text-sm font-medium min-h-[44px] mb-3 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold">
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+          <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/>
+          <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/>
+          <path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/>
+          <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/>
+        </svg>
+        Continue with Google
       </button>
 
       {/* Email magic link */}

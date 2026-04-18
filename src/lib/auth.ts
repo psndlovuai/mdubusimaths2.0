@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import Apple from 'next-auth/providers/apple'
+import Google from 'next-auth/providers/google'
 import Resend from 'next-auth/providers/resend'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { prisma } from '@/infrastructure/prisma/client'
@@ -22,6 +23,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     Apple({
       clientId:     process.env.AUTH_APPLE_ID     ?? '',
       clientSecret: process.env.AUTH_APPLE_SECRET ?? '',
+    }),
+
+    // ── Google Sign In ─────────────────────────────────────────────────────
+    Google({
+      clientId:     process.env.AUTH_GOOGLE_ID     ?? '',
+      clientSecret: process.env.AUTH_GOOGLE_SECRET ?? '',
     }),
 
     // ── Email magic link via Resend ───────────────────────────────────────
