@@ -6,9 +6,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
-import { Loader2, ArrowLeft } from 'lucide-react'
-import { BRAND_NAME } from '@/lib/constants'
+import { Loader2 } from 'lucide-react'
+import { Logo } from '@/components/layout/logo'
 
 const schema = z.object({
   email:    z.string().email('Enter a valid email'),
@@ -45,19 +44,9 @@ export default function TutorLoginPage() {
   return (
     // Full-bleed navy override — positioned to cover the card from the parent layout
     <div className="-mx-8 -my-10 bg-navy rounded-xl px-8 py-10 min-h-[520px] flex flex-col">
-      {/* Back link */}
-      <Link
-        href="/"
-        className="inline-flex items-center gap-1.5 text-xs text-white/60 hover:text-white transition-colors mb-8 self-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
-      >
-        <ArrowLeft className="w-3.5 h-3.5" />
-        Back to main site
-      </Link>
-
-      {/* Wordmark */}
-      <div className="flex items-center gap-2 mb-10">
-        <span aria-hidden="true" className="block w-2.5 h-2.5 bg-green rotate-45 flex-shrink-0" />
-        <span className="font-display text-xl font-medium text-white leading-none">{BRAND_NAME}</span>
+      {/* Logo */}
+      <div className="mb-10">
+        <Logo variant="on-dark" className="h-9 w-auto" />
       </div>
 
       <div className="flex-1">
