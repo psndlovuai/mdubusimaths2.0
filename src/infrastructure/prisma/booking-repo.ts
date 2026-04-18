@@ -14,7 +14,7 @@ export class PrismaBookingRepo implements IBookingRepo {
       create: {
         id: session.id,
         studentId: session.studentId,
-        sessionType: session.type.value.toUpperCase() as 'ONCE_OFF' | 'MONTHLY' | 'GROUP',
+        sessionType: session.type.value.toUpperCase() as 'MEET_GREET' | 'ONCE_OFF' | 'MONTHLY' | 'GROUP',
         subject: session.subject,
         topic: session.topic,
         scheduledAt: session.slot.start,
@@ -113,7 +113,7 @@ function mapRow(row: PrismaSession): Session {
   return new Session(
     row.id,
     row.studentId,
-    new SessionType(row.sessionType.toLowerCase() as 'once_off' | 'monthly' | 'group'),
+    new SessionType(row.sessionType.toLowerCase() as 'meet_greet' | 'once_off' | 'monthly' | 'group'),
     row.subject,
     row.topic,
     new TimeSlot(
