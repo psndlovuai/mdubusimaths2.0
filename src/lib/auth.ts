@@ -1,27 +1,21 @@
 import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
-import Google from 'next-auth/providers/google'
-import { PrismaAdapter } from '@auth/prisma-adapter'
 import { prisma } from '@/infrastructure/prisma/client'
 import bcrypt from 'bcryptjs'
 import { z } from 'zod'
 import { authConfig } from '@/lib/auth.config'
 
 const loginSchema = z.object({
-  email: z.string().email(),
+  email:    z.string().email(),
   password: z.string().min(8),
 })
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
-  adapter: PrismaAdapter(prisma),
+  // No PrismaAdapter — we use JWT sessions so no DB session storage needed.
+  // Prisma is only called inside authorize() to look up the user.
 
   providers: [
-    Google({
-      clientId: process.env.AUTH_GOOGLE_ID ?? '',
-      clientSecret: process.env.AUTH_GOOGLE_SECRET ?? '',
-    }),
-
     Credentials({
       name: 'credentials',
       credentials: {
