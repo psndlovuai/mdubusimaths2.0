@@ -29,7 +29,7 @@ export default async function SettingsPage() {
           <h2 className="font-semibold text-ink">Notifications</h2>
         </div>
         <p className="text-xs text-muted-foreground mb-5">
-          Choose which emails and messages you'd like to receive.
+          Choose which emails and messages you would like to receive.
         </p>
 
         <div className="space-y-4">
