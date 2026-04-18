@@ -13,12 +13,15 @@ import { Logo } from '@/components/layout/logo'
 import { SOCIAL_LINKS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
-const NAV_ITEMS = [
-  { href: '/dashboard', label: 'Dashboard',   icon: LayoutDashboard },
-  { href: '/sessions',  label: 'Sessions',    icon: Clock },
+const MAIN_NAV = [
+  { href: '/dashboard', label: 'Dashboard',    icon: LayoutDashboard },
+  { href: '/sessions',  label: 'Sessions',     icon: Clock },
   { href: '/book',      label: 'Book Session', icon: BookOpen },
-  { href: '/profile',   label: 'Profile',     icon: User },
-  { href: '/settings',  label: 'Settings',    icon: Settings },
+]
+
+const BOTTOM_NAV = [
+  { href: '/profile',  label: 'Profile',  icon: User },
+  { href: '/settings', label: 'Settings', icon: Settings },
 ]
 
 interface Props { firstName: string; avatarUrl?: string | null; initials?: string }
@@ -53,9 +56,9 @@ export function StudentSidebar({ firstName, avatarUrl, initials }: Props) {
         </div>
       </div>
 
-      {/* Nav items */}
+      {/* Main nav */}
       <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto" aria-label="Student navigation">
-        {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
+        {MAIN_NAV.map(({ href, label, icon: Icon }) => {
           const active = pathname === href || (href !== '/dashboard' && pathname.startsWith(href))
           return (
             <Link
@@ -89,11 +92,32 @@ export function StudentSidebar({ firstName, avatarUrl, initials }: Props) {
         </a>
       </nav>
 
-      {/* Sign out */}
-      <div className="px-3 py-4 border-t border-border/60">
+      {/* Bottom: Profile, Settings, Sign out */}
+      <div className="px-3 py-3 border-t border-border/60 space-y-0.5">
+        {BOTTOM_NAV.map(({ href, label, icon: Icon }) => {
+          const active = pathname === href || pathname.startsWith(href)
+          return (
+            <Link
+              key={href}
+              href={href}
+              onClick={closeMobile}
+              className={cn(
+                'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors min-h-[44px]',
+                active
+                  ? 'bg-navy text-white'
+                  : 'text-muted-foreground hover:text-ink hover:bg-cream',
+              )}
+            >
+              <Icon className="w-4 h-4 flex-shrink-0" />
+              {label}
+              {active && <ChevronRight className="w-3.5 h-3.5 ml-auto opacity-60" />}
+            </Link>
+          )
+        })}
+
         <button
           onClick={() => signOut({ callbackUrl: '/login' })}
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-muted-foreground hover:text-ink hover:bg-cream transition-colors w-full min-h-[44px]"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-muted-foreground hover:text-red-600 hover:bg-red-50 transition-colors w-full min-h-[44px]"
         >
           <LogOut className="w-4 h-4 flex-shrink-0" />
           Sign out
