@@ -16,9 +16,7 @@ const ACADEMIC_LEVELS = [
   { value: 'grade_11',      label: 'Grade 11' },
   { value: 'grade_12',      label: 'Grade 12' },
   { value: 'undergraduate', label: 'Undergraduate' },
-  { value: 'honours',       label: 'Honours' },
   { value: 'postgraduate',  label: 'Postgraduate' },
-  { value: 'professional',  label: 'Professional' },
 ]
 
 export default function SignupPage() {
@@ -38,12 +36,16 @@ export default function SignupPage() {
       setServerError(result.error)
       return
     }
-    // Auto sign-in and redirect
-    await signIn('credentials', {
+    const signInResult = await signIn('credentials', {
       email:    values.email,
       password: values.password,
       redirect: false,
     })
+    if (signInResult?.error) {
+      setServerError('Account created! Please sign in.')
+      return
+    }
+    router.refresh()
     router.push('/dashboard')
   }
 
