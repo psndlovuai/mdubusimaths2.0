@@ -7,28 +7,32 @@ import { cn } from '@/lib/utils'
 
 const FAQS = [
   {
-    question: 'How do I book a session?',
-    answer:   'Create a free account, choose your session type (once-off, monthly, or group), select a date and time from the available slots, and complete payment. Your booking is confirmed immediately after payment.',
+    question: 'What is the Meet & Greet and do I have to pay?',
+    answer:   'The Meet & Greet is a free 15-minute online introduction call — no payment, no commitment. It\'s a chance for us to understand your goals, current level, and challenges, and for you to get a feel for the teaching style before committing to a full session.',
+  },
+  {
+    question: 'Are all sessions online?',
+    answer:   'Yes, all sessions are conducted 100% online via video call. You can join from anywhere in South Africa — all you need is a stable internet connection, a device with a camera, and something to write on. No commuting, no travel costs.',
+  },
+  {
+    question: 'What session types are available?',
+    answer:   'We offer four options: a free 15-minute Meet & Greet; a 60-minute once-off session (R150) — perfect for exam prep or a specific topic; a 2-hour group session (R250 per person) with up to 6 students on a shared topic; and a monthly package (R1,500) with unlimited 60-minute sessions and priority scheduling.',
   },
   {
     question: 'How does payment work?',
-    answer:   'Payment is processed securely through Cal.com at the time of booking. We accept all major payment methods including credit/debit cards. Your booking is only confirmed once payment has been received — so there is no risk of double-booking.',
+    answer:   'Payment is processed securely at checkout when you book. We accept all major credit and debit cards. Your session is only confirmed once payment is received — no risk of double-booking. The Meet & Greet is completely free with no payment required.',
   },
   {
     question: 'Can I cancel a booking?',
-    answer:   'Yes, cancellations are allowed up to 12 hours before the scheduled session start time. Cancellations within 12 hours of the session cannot be refunded. Please refer to our full Cancellation and Refund policies for complete details.',
+    answer:   'Yes, cancellations are allowed up to 12 hours before the scheduled session start time. Cancellations made within 12 hours of the session cannot be refunded. Please see our full Refund Policy for details.',
   },
   {
-    question: 'What subjects do you cover?',
-    answer:   'We specialise in Mathematics at all levels — Pure Maths, Applied Maths, Statistics, and related subjects. For Grade 11 and 12 students we follow the CAPS curriculum. For university students we cover calculus, linear algebra, differential equations, and more.',
-  },
-  {
-    question: 'What levels do you teach?',
-    answer:   'We teach Grade 11, Grade 12 (NSC), and university-level mathematics including first-year calculus, linear algebra, probability and statistics, and real analysis. If you are unsure whether your level is covered, feel free to reach out before booking.',
+    question: 'What subjects and levels do you cover?',
+    answer:   'We specialise in Mathematics at all levels — Grade 11 and 12 (CAPS curriculum), and university-level maths including calculus, linear algebra, probability and statistics, and differential equations. If you\'re unsure whether your level or topic is covered, start with a free Meet & Greet.',
   },
   {
     question: 'How do group sessions work?',
-    answer:   'Group sessions accommodate up to 6 students and run for 2 hours. They are ideal for peer learning and exam preparation on a specific topic. Each group session is focused on a set topic agreed upon at booking. At R250 per person, they offer excellent value for multiple students studying the same content.',
+    answer:   'Group sessions run for 2 hours online and accommodate up to 6 students. The topic is agreed upon at booking so everyone arrives prepared. At R250 per person, they\'re excellent value — great for study groups or friends tackling the same exam.',
   },
 ]
 

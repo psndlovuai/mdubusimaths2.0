@@ -109,6 +109,7 @@ model Session {
 }
 
 enum SessionType {
+  MEET_GREET
   ONCE_OFF
   MONTHLY
   GROUP

@@ -1,16 +1,26 @@
 // ─── Session pricing (ZAR cents) ─────────────────────────────────────────────
-// These are the source-of-truth prices. Never hardcode prices in UI components.
+// Source of truth. Never hardcode prices in UI components.
 export const PRICES: Record<string, number> = {
-  once_off: 15000,   // R150.00
-  monthly:  150000,  // R1,500.00
-  group:    25000,   // R250.00
+  meet_greet: 0,       // Free — 15 min introduction call
+  once_off:   15000,   // R150 — 60 min one-on-one / exam prep
+  group:      25000,   // R250 per person — 2 hr group session
+  monthly:    150000,  // R1,500 — monthly package
 }
 
 // ─── Session display labels ───────────────────────────────────────────────────
 export const SESSION_LABELS: Record<string, string> = {
-  once_off: 'Once-off (60 min)',
-  monthly:  'Monthly Package (24 hrs)',
-  group:    'Group Session (2 hrs)',
+  meet_greet: 'Meet & Greet (15 min)',
+  once_off:   'Once-off / Exam Prep (60 min)',
+  group:      'Group Session (2 hrs)',
+  monthly:    'Monthly Package',
+}
+
+// ─── Session durations in minutes ────────────────────────────────────────────
+export const SESSION_DURATIONS: Record<string, number> = {
+  meet_greet: 15,
+  once_off:   60,
+  group:      120,
+  monthly:    60,   // individual session within the package
 }
 
 // ─── Brand ───────────────────────────────────────────────────────────────────

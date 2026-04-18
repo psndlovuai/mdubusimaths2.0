@@ -8,11 +8,13 @@ import { Navbar } from '@/components/layout/navbar'
 import { Footer } from '@/components/layout/footer'
 
 const SUBJECTS = [
+  'Meet & Greet (Free intro call)',
+  'Once-off / Exam Prep Session',
+  'Group Session',
+  'Monthly Package',
   'Grade 11 Mathematics',
   'Grade 12 Mathematics',
   'University Mathematics',
-  'Exam Preparation',
-  'Group Session',
   'Pricing & Packages',
   'Other',
 ]

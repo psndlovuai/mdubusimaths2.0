@@ -80,7 +80,6 @@ export function profileCompleteness(profile: MyProfileData): number {
     profile.academicLevel,
     profile.school,
     profile.subjects,
-    profile.preferredMode,
   ]
   const filled = fields.filter(Boolean).length
   return Math.round((filled / fields.length) * 100)

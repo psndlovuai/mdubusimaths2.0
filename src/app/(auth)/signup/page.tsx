@@ -20,8 +20,6 @@ const schema = z.object({
   academicLevel: z.string().min(1, 'Please select your academic level'),
   school:        z.string().optional(),
   subjects:      z.string().optional(),
-  preferredMode: z.enum(['online', 'in_person', 'both']).default('online'),
-  location:      z.string().optional(),
 })
 
 type FormValues = z.infer<typeof schema>
@@ -40,13 +38,8 @@ export default function SignupPage() {
   const [serverError, setServerError] = useState<string | null>(null)
   const [success,     setSuccess]     = useState(false)
 
-  const { register, handleSubmit, watch, formState: { errors, isSubmitting } } =
-    useForm<FormValues>({
-      resolver: zodResolver(schema),
-      defaultValues: { preferredMode: 'online' },
-    })
-
-  const mode = watch('preferredMode')
+  const { register, handleSubmit, formState: { errors, isSubmitting } } =
+    useForm<FormValues>({ resolver: zodResolver(schema) })
 
   async function onSubmit(values: FormValues) {
     setServerError(null)
@@ -179,47 +172,6 @@ export default function SignupPage() {
             <input id="subjects" type="text" placeholder="e.g. Mathematics, Physical Sciences, Calculus"
               className={inputCls} {...register('subjects')} />
           </div>
-        </div>
-
-        {/* ── Session preference ────────────────────────────────────────── */}
-        <div className="space-y-4 pt-2">
-          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Session preference</p>
-
-          <div>
-            <label className="block text-sm font-medium text-ink mb-2">How would you like to learn?</label>
-            <div className="grid grid-cols-3 gap-2">
-              {([
-                { value: 'online',    label: 'Online' },
-                { value: 'in_person', label: 'In-person' },
-                { value: 'both',      label: 'Both' },
-              ] as const).map(opt => (
-                <label
-                  key={opt.value}
-                  className={`flex items-center justify-center gap-2 border-2 rounded-xl py-3 text-sm font-medium cursor-pointer transition-all ${
-                    mode === opt.value
-                      ? 'border-navy bg-navy/5 text-navy'
-                      : 'border-border bg-white text-muted-foreground hover:border-navy/40'
-                  }`}
-                >
-                  <input type="radio" className="sr-only" value={opt.value} {...register('preferredMode')} />
-                  {opt.label}
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {(mode === 'in_person' || mode === 'both') && (
-            <div>
-              <label htmlFor="location" className="block text-sm font-medium text-ink mb-1.5">
-                Your area / city
-              </label>
-              <input id="location" type="text" placeholder="e.g. Johannesburg, Pretoria, Cape Town"
-                className={inputCls} {...register('location')} />
-              <p className="mt-1 text-xs text-muted-foreground">
-                Helps us find nearby in-person session options
-              </p>
-            </div>
-          )}
         </div>
 
         {serverError && <p className="text-sm text-red-600 text-center" role="alert">{serverError}</p>}

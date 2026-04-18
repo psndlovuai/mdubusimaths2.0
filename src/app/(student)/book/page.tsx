@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { ArrowLeft, ChevronRight, Clock, Calendar, Users } from 'lucide-react'
+import { ArrowLeft, ChevronRight, Clock, Calendar, Users, Video } from 'lucide-react'
 import { PRICES, SESSION_LABELS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
@@ -14,39 +14,50 @@ const CalEmbed = dynamic(
   { ssr: false, loading: () => <div className="h-[600px] bg-cream rounded-xl animate-pulse" /> },
 )
 
-// Cal.com event type slugs (reverse of SLUG_MAP in domain)
+// Cal.com event type slugs — must match slugs created in your Cal.com dashboard
 const TYPE_SLUGS: Record<string, string> = {
-  once_off: 'once-off-60min',
-  monthly:  'monthly-60min',
-  group:    'group-120min',
+  meet_greet: 'meet-greet-15min',
+  once_off:   'once-off-60min',
+  group:      'group-120min',
+  monthly:    'monthly-60min',
 }
 
 const SESSION_TYPES = [
   {
+    value:       'meet_greet',
+    label:       'Meet & Greet',
+    description: 'Free 15-minute introduction call — no commitment',
+    badge:       'Free',
+    icon:        Video,
+    priceKey:    'meet_greet',
+  },
+  {
     value:       'once_off',
-    label:       'Once-off',
-    description: '60-minute one-on-one session',
+    label:       'Once-off / Exam Prep',
+    description: '60-minute focused one-on-one session',
+    badge:       null,
     icon:        Clock,
     priceKey:    'once_off',
   },
   {
-    value:       'monthly',
-    label:       'Monthly Package',
-    description: '24 hours of tutoring per month',
-    icon:        Calendar,
-    priceKey:    'monthly',
-  },
-  {
     value:       'group',
     label:       'Group Session',
-    description: '2-hour session with other students',
+    description: '2-hour session with other students (up to 6)',
+    badge:       'Per person',
     icon:        Users,
     priceKey:    'group',
+  },
+  {
+    value:       'monthly',
+    label:       'Monthly Package',
+    description: 'Unlimited sessions throughout the month',
+    badge:       'Best value',
+    icon:        Calendar,
+    priceKey:    'monthly',
   },
 ]
 
 type Step = 'type' | 'subject' | 'calendar'
-
 const STEPS: Step[] = ['type', 'subject', 'calendar']
 const STEP_LABELS: Record<Step, string> = {
   type:     'Session type',
@@ -63,25 +74,18 @@ function StepIndicator({ current }: { current: Step }) {
           <div
             className={cn(
               'w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold transition-colors',
-              i < idx  && 'bg-green text-white',
+              i < idx   && 'bg-green text-white',
               i === idx && 'bg-navy text-white',
-              i > idx  && 'bg-border text-muted-foreground',
+              i > idx   && 'bg-border text-muted-foreground',
             )}
             aria-current={i === idx ? 'step' : undefined}
           >
             {i + 1}
           </div>
-          <span
-            className={cn(
-              'text-xs font-medium hidden sm:block',
-              i === idx ? 'text-navy' : 'text-muted-foreground',
-            )}
-          >
+          <span className={cn('text-xs font-medium hidden sm:block', i === idx ? 'text-navy' : 'text-muted-foreground')}>
             {STEP_LABELS[step]}
           </span>
-          {i < STEPS.length - 1 && (
-            <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-          )}
+          {i < STEPS.length - 1 && <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />}
         </div>
       ))}
     </nav>
@@ -89,7 +93,8 @@ function StepIndicator({ current }: { current: Step }) {
 }
 
 function formatPrice(cents: number) {
-  return `R${(cents / 100).toLocaleString('en-ZA', { minimumFractionDigits: 2 })}`
+  if (cents === 0) return 'Free'
+  return `R${(cents / 100).toLocaleString('en-ZA', { minimumFractionDigits: 0 })}`
 }
 
 // ── Step 1: Pick session type ─────────────────────────────────────────────────
@@ -99,10 +104,10 @@ function StepType({ onNext }: { onNext: (type: string) => void }) {
   return (
     <div>
       <h1 className="font-display text-3xl font-medium text-navy mb-1">Choose a session type</h1>
-      <p className="text-muted-foreground text-sm mb-6">Pick the option that works best for you</p>
+      <p className="text-muted-foreground text-sm mb-6">All sessions are conducted online via video call.</p>
 
       <div className="space-y-3 mb-8">
-        {SESSION_TYPES.map(({ value, label, description, icon: Icon, priceKey }) => {
+        {SESSION_TYPES.map(({ value, label, description, badge, icon: Icon, priceKey }) => {
           const price = PRICES[priceKey] ?? 0
           return (
             <button
@@ -124,11 +129,25 @@ function StepType({ onNext }: { onNext: (type: string) => void }) {
                 <Icon className="w-5 h-5" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-semibold text-ink">{label}</p>
+                <div className="flex items-center gap-2">
+                  <p className="font-semibold text-ink">{label}</p>
+                  {badge && (
+                    <span className={cn(
+                      'text-xs font-semibold px-2 py-0.5 rounded-full',
+                      price === 0
+                        ? 'bg-green/10 text-green-700 border border-green/20'
+                        : 'bg-gold/10 text-gold-dark border border-gold/20',
+                    )}>
+                      {badge}
+                    </span>
+                  )}
+                </div>
                 <p className="text-sm text-muted-foreground">{description}</p>
               </div>
               <div className="text-right flex-shrink-0">
-                <p className="font-bold text-navy">{formatPrice(price)}</p>
+                <p className={cn('font-bold', price === 0 ? 'text-green-700' : 'text-navy')}>
+                  {formatPrice(price)}
+                </p>
               </div>
             </button>
           )
@@ -147,66 +166,68 @@ function StepType({ onNext }: { onNext: (type: string) => void }) {
 }
 
 // ── Step 2: Subject + Topic ───────────────────────────────────────────────────
-function StepSubject({
-  onNext,
-  onBack,
-}: {
+function StepSubject({ sessionType, onNext, onBack }: {
+  sessionType: string
   onNext: (subject: string, topic: string) => void
   onBack: () => void
 }) {
   const [subject, setSubject] = useState('')
   const [topic,   setTopic]   = useState('')
 
+  const isMeetGreet = sessionType === 'meet_greet'
+
   return (
     <div>
-      <h1 className="font-display text-3xl font-medium text-navy mb-1">What do you need help with?</h1>
-      <p className="text-muted-foreground text-sm mb-6">Tell us the subject and specific topic</p>
+      <h1 className="font-display text-3xl font-medium text-navy mb-1">
+        {isMeetGreet ? 'Tell us about yourself' : 'What do you need help with?'}
+      </h1>
+      <p className="text-muted-foreground text-sm mb-6">
+        {isMeetGreet
+          ? 'Let us know your level and what you\'re studying so we can make the most of our 15 minutes.'
+          : 'Tell us the subject and specific topic so the session is focused from the start.'}
+      </p>
 
       <div className="space-y-5 mb-8">
         <div>
           <label htmlFor="subject" className="block text-sm font-medium text-ink mb-1.5">
-            Subject <span className="text-red-500">*</span>
+            {isMeetGreet ? 'Subject / Level' : 'Subject'} <span className="text-red-500">*</span>
           </label>
           <input
             id="subject"
             type="text"
             value={subject}
             onChange={e => setSubject(e.target.value)}
-            placeholder="e.g. Mathematics, Physical Sciences"
+            placeholder={isMeetGreet ? 'e.g. Grade 12 Mathematics, First-year Calculus' : 'e.g. Mathematics, Physical Sciences'}
             className="w-full border border-border rounded-xl px-4 py-3 text-sm text-ink placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold min-h-[44px]"
           />
         </div>
 
         <div>
           <label htmlFor="topic" className="block text-sm font-medium text-ink mb-1.5">
-            Topic <span className="text-muted-foreground font-normal">(optional)</span>
+            {isMeetGreet ? 'Specific challenge or goal' : 'Topic'}
+            <span className="text-muted-foreground font-normal"> (optional)</span>
           </label>
           <input
             id="topic"
             type="text"
             value={topic}
             onChange={e => setTopic(e.target.value)}
-            placeholder="e.g. Calculus, Algebra, Trigonometry"
+            placeholder={isMeetGreet ? 'e.g. Struggling with calculus before finals' : 'e.g. Calculus, Algebra, Trigonometry'}
             className="w-full border border-border rounded-xl px-4 py-3 text-sm text-ink placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold min-h-[44px]"
           />
         </div>
       </div>
 
       <div className="flex gap-3">
-        <button
-          type="button"
-          onClick={onBack}
-          className="flex items-center gap-1.5 border border-border rounded-full px-5 py-3 text-sm font-medium text-ink hover:bg-cream transition-colors min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-        >
+        <button type="button" onClick={onBack}
+          className="flex items-center gap-1.5 border border-border rounded-full px-5 py-3 text-sm font-medium text-ink hover:bg-cream transition-colors min-h-[44px]">
           <ArrowLeft className="w-4 h-4" />
           Back
         </button>
-        <button
-          type="button"
+        <button type="button"
           onClick={() => subject.trim() && onNext(subject.trim(), topic.trim())}
           disabled={!subject.trim()}
-          className="flex-1 bg-gold hover:bg-gold-dark text-white font-semibold rounded-full py-3 text-sm transition-colors min-h-[44px] disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
-        >
+          className="flex-1 bg-gold hover:bg-gold-dark text-white font-semibold rounded-full py-3 text-sm transition-colors min-h-[44px] disabled:opacity-50">
           Continue
         </button>
       </div>
@@ -215,14 +236,7 @@ function StepSubject({
 }
 
 // ── Step 3: Cal.com embed ─────────────────────────────────────────────────────
-function StepCalendar({
-  sessionType,
-  subject,
-  topic,
-  userName,
-  userEmail,
-  onBack,
-}: {
+function StepCalendar({ sessionType, subject, topic, userName, userEmail, onBack }: {
   sessionType: string
   subject:     string
   topic:       string
@@ -230,20 +244,26 @@ function StepCalendar({
   userEmail:   string
   onBack:      () => void
 }) {
-  const slug     = TYPE_SLUGS[sessionType] ?? 'once-off-60min'
-  const calUser  = process.env.NEXT_PUBLIC_CAL_USERNAME ?? 'ps-ndlovu'
-  const calLink  = `${calUser}/${slug}`
+  const slug    = TYPE_SLUGS[sessionType] ?? 'once-off-60min'
+  const calUser = process.env.NEXT_PUBLIC_CAL_USERNAME ?? 'ps-ndlovu'
+  const calLink = `${calUser}/${slug}`
+  const isFree  = sessionType === 'meet_greet'
 
   return (
     <div>
       <h1 className="font-display text-3xl font-medium text-navy mb-1">Pick a date & time</h1>
       <p className="text-muted-foreground text-sm mb-2">
-        Payment is collected securely by Cal.com before your session is confirmed.
+        {isFree
+          ? 'Choose a 15-minute slot for your free introduction call.'
+          : 'Payment is collected securely at checkout before your session is confirmed.'}
       </p>
       <div className="flex flex-wrap gap-2 mb-6">
         <span className="text-xs bg-navy/10 text-navy px-2 py-1 rounded-full">{SESSION_LABELS[sessionType] ?? sessionType}</span>
         <span className="text-xs bg-blue/10 text-blue px-2 py-1 rounded-full">{subject}</span>
         {topic && <span className="text-xs bg-cream text-muted-foreground border border-border px-2 py-1 rounded-full">{topic}</span>}
+        <span className="text-xs bg-green/10 text-green-700 border border-green/20 px-2 py-1 rounded-full flex items-center gap-1">
+          <Video className="w-3 h-3" /> Online
+        </span>
       </div>
 
       <CalEmbed
@@ -260,11 +280,8 @@ function StepCalendar({
         style={{ width: '100%', height: '600px', border: 'none', borderRadius: '12px' }}
       />
 
-      <button
-        type="button"
-        onClick={onBack}
-        className="mt-4 flex items-center gap-1.5 text-sm text-muted-foreground hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
-      >
+      <button type="button" onClick={onBack}
+        className="mt-4 flex items-center gap-1.5 text-sm text-muted-foreground hover:text-ink transition-colors">
         <ArrowLeft className="w-4 h-4" />
         Back
       </button>
@@ -285,10 +302,8 @@ export default function BookPage() {
 
   return (
     <div className="max-w-xl">
-      <Link
-        href="/dashboard"
-        className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-ink transition-colors mb-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
-      >
+      <Link href="/dashboard"
+        className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-ink transition-colors mb-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">
         <ArrowLeft className="w-4 h-4" />
         Back to dashboard
       </Link>
@@ -296,21 +311,13 @@ export default function BookPage() {
       <StepIndicator current={step} />
 
       {step === 'type' && (
-        <StepType
-          onNext={type => {
-            setSessionType(type)
-            setStep('subject')
-          }}
-        />
+        <StepType onNext={type => { setSessionType(type); setStep('subject') }} />
       )}
 
-      {step === 'subject' && (
+      {step === 'subject' && sessionType && (
         <StepSubject
-          onNext={(s, t) => {
-            setSubject(s)
-            setTopic(t)
-            setStep('calendar')
-          }}
+          sessionType={sessionType}
+          onNext={(s, t) => { setSubject(s); setTopic(t); setStep('calendar') }}
           onBack={() => setStep('type')}
         />
       )}

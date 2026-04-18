@@ -1,20 +1,24 @@
-export type SessionTypeValue = 'once_off' | 'monthly' | 'group'
+export type SessionTypeValue = 'meet_greet' | 'once_off' | 'group' | 'monthly'
 
 const SLUG_MAP: Record<string, SessionTypeValue> = {
-  'once-off-60min': 'once_off',
-  'monthly-60min':  'monthly',
-  'group-120min':   'group',
-  // fallback: accept raw values too
-  'once_off':       'once_off',
-  'monthly':        'monthly',
-  'group':          'group',
+  // Cal.com event type slugs
+  'meet-greet-15min': 'meet_greet',
+  'once-off-60min':   'once_off',
+  'group-120min':     'group',
+  'monthly-60min':    'monthly',
+  // accept raw values as fallback
+  'meet_greet':       'meet_greet',
+  'once_off':         'once_off',
+  'group':            'group',
+  'monthly':          'monthly',
 }
 
-// Labels are duplicated here intentionally — domain must not import from lib/
+// Labels intentionally duplicated — domain must not import from lib/
 const LABELS: Record<SessionTypeValue, string> = {
-  once_off: 'Once-off (60 min)',
-  monthly:  'Monthly Package (24 hrs)',
-  group:    'Group Session (2 hrs)',
+  meet_greet: 'Meet & Greet (15 min)',
+  once_off:   'Once-off / Exam Prep (60 min)',
+  group:      'Group Session (2 hrs)',
+  monthly:    'Monthly Package',
 }
 
 export class SessionType {

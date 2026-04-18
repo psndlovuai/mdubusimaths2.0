@@ -2,19 +2,19 @@ import { AnimatedSection } from '@/components/ui/animated-section'
 
 const STEPS = [
   {
-    number: '01',
-    title:  'Book Online',
-    description: 'Choose your session type — once-off, monthly package, or group session. Pick a date and time that suits you. Payment is processed securely at checkout.',
+    number:      '01',
+    title:       'Book Online',
+    description: 'Start with a free 15-minute Meet & Greet or go straight to booking a once-off session, group session, or monthly package. Pick a time that works for you — payment is processed securely at checkout.',
   },
   {
-    number: '02',
-    title:  'Attend Your Session',
-    description: 'Join your personalised online maths session. All sessions are conducted via video call so you can learn from anywhere in South Africa.',
+    number:      '02',
+    title:       'Join Your Session',
+    description: 'All sessions are conducted online via video call. No commuting, no setup hassle — just open the link and learn from anywhere in South Africa at the scheduled time.',
   },
   {
-    number: '03',
-    title:  'Achieve Results',
-    description: 'Apply what you have learned, track your progress, and watch your mathematical confidence grow. We celebrate every improvement, big and small.',
+    number:      '03',
+    title:       'Achieve Results',
+    description: 'Apply what you\'ve learned, track your progress, and build real mathematical confidence. Whether it\'s passing matric, acing exams, or mastering university maths — we\'re with you every step.',
   },
 ]
 
@@ -27,7 +27,7 @@ export function HowItWorks() {
             How It Works
           </h2>
           <p className="text-muted-foreground text-lg">
-            Getting started is simple. Three steps from first visit to first session.
+            Three simple steps — from first visit to your first session.
           </p>
         </AnimatedSection>
 
