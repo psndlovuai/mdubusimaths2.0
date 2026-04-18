@@ -144,25 +144,18 @@ export default function SignupPage() {
         <div className="space-y-4 pt-2">
           <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Academic profile</p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label htmlFor="academicLevel" className="block text-sm font-medium text-ink mb-1.5">Academic level</label>
+          <div>
+            <label htmlFor="academicLevel" className="block text-sm font-medium text-ink mb-1.5">Academic level</label>
+            <div className="relative">
               <select id="academicLevel" defaultValue=""
-                className={`${inputCls} appearance-none`}
+                className={`${inputCls} appearance-none pr-10`}
                 {...register('academicLevel')}>
                 <option value="" disabled>Select level</option>
                 {ACADEMIC_LEVELS.map(l => <option key={l.value} value={l.value}>{l.label}</option>)}
               </select>
-              {errors.academicLevel && <p className="mt-1 text-xs text-red-600">{errors.academicLevel.message}</p>}
+              <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
             </div>
-
-            <div>
-              <label htmlFor="school" className="block text-sm font-medium text-ink mb-1.5">
-                School / University <span className="font-normal text-muted-foreground">(optional)</span>
-              </label>
-              <input id="school" type="text" placeholder="e.g. Eduvos, Wits, UCT"
-                className={inputCls} {...register('school')} />
-            </div>
+            {errors.academicLevel && <p className="mt-1 text-xs text-red-600">{errors.academicLevel.message}</p>}
           </div>
 
           <div>

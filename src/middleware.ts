@@ -21,6 +21,7 @@ export default auth((req) => {
     nextUrl.pathname.startsWith('/dashboard') ||
     nextUrl.pathname.startsWith('/sessions')  ||
     nextUrl.pathname.startsWith('/profile')   ||
+    nextUrl.pathname.startsWith('/settings')  ||
     nextUrl.pathname.startsWith('/book')
   ) {
     if (!isLoggedIn) return NextResponse.redirect(new URL('/login', req.url))
@@ -36,6 +37,7 @@ export const config = {
     '/dashboard/:path*',
     '/sessions/:path*',
     '/profile/:path*',
+    '/settings/:path*',
     '/book/:path*',
     '/tutor/:path*',
   ],
