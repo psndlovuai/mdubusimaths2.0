@@ -1,4 +1,5 @@
-import { getMyProfile, profileCompleteness } from '@/app/actions/profile'
+import { getMyProfile } from '@/app/actions/profile'
+import { profileCompleteness } from '@/lib/profile-utils'
 import { auth } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { ProfileForm } from '@/components/student/profile-form'
