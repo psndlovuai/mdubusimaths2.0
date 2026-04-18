@@ -8,7 +8,12 @@ export interface UpdateProfileInput {
   firstName?:     string
   lastName?:      string
   academicLevel?: string | null
+  school?:        string | null
+  subjects?:      string | null
   phone?:         string | null
+  whatsapp?:      string | null
+  bio?:           string | null
+  marketingOptin?: boolean
 }
 
 export async function updateProfile(data: UpdateProfileInput): Promise<{ error?: string }> {
@@ -30,7 +35,12 @@ export interface MyProfileData {
   lastName:      string
   email:         string
   academicLevel: string | null
+  school:        string | null
+  subjects:      string | null
   phone:         string | null
+  whatsapp:      string | null
+  bio:           string | null
+  marketingOptin: boolean
 }
 
 export async function getMyProfile(): Promise<MyProfileData | null> {
@@ -39,7 +49,32 @@ export async function getMyProfile(): Promise<MyProfileData | null> {
 
   const user = await prisma.user.findUnique({
     where:  { id: session.user.id },
-    select: { firstName: true, lastName: true, email: true, academicLevel: true, phone: true },
+    select: {
+      firstName:     true,
+      lastName:      true,
+      email:         true,
+      academicLevel: true,
+      school:        true,
+      subjects:      true,
+      phone:         true,
+      whatsapp:      true,
+      bio:           true,
+      marketingOptin: true,
+    },
   })
   return user ?? null
+}
+
+/** Returns 0-100 indicating how complete the student's profile is */
+export function profileCompleteness(profile: MyProfileData): number {
+  const fields = [
+    profile.firstName,
+    profile.lastName,
+    profile.phone || profile.whatsapp,
+    profile.academicLevel,
+    profile.school,
+    profile.subjects,
+  ]
+  const filled = fields.filter(Boolean).length
+  return Math.round((filled / fields.length) * 100)
 }

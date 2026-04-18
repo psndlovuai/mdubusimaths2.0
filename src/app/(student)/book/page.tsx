@@ -254,6 +254,7 @@ function StepCalendar({
           prefill: {
             name:  userName,
             email: userEmail,
+            notes: topic ? `Subject: ${subject} — Topic: ${topic}` : `Subject: ${subject}`,
           },
         }}
         style={{ width: '100%', height: '600px', border: 'none', borderRadius: '12px' }}

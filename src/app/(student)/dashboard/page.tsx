@@ -1,7 +1,8 @@
 import { auth } from '@/lib/auth'
 import { container } from '@/infrastructure/container'
+import { getMyProfile, profileCompleteness } from '@/app/actions/profile'
 import Link from 'next/link'
-import { CalendarDays, ChevronRight, BookOpen, UserCircle } from 'lucide-react'
+import { CalendarDays, ChevronRight, BookOpen, UserCircle, AlertCircle } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = { title: 'Dashboard' }
@@ -51,9 +52,13 @@ export default async function DashboardPage() {
   const name     = session!.user.name ?? ''
   const firstName = name.split(' ')[0] ?? 'Student'
 
-  const c        = container()
-  const upcoming = await c.listUpcomingSessions.execute(userId)
+  const [upcoming, profile] = await Promise.all([
+    container().listUpcomingSessions.execute(userId),
+    getMyProfile(),
+  ])
+
   const sessions = upcoming.slice(0, 3)
+  const pct = profile ? profileCompleteness(profile) : 0
 
   return (
     <div className="space-y-8">
@@ -68,6 +73,30 @@ export default async function DashboardPage() {
           })}
         </p>
       </div>
+
+      {/* Profile completeness banner */}
+      {pct < 100 && (
+        <Link
+          href="/profile"
+          className="flex items-center justify-between gap-4 bg-gold/10 border border-gold/30 rounded-xl p-4 hover:bg-gold/15 transition-colors group"
+        >
+          <div className="flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-gold-dark flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-sm font-semibold text-ink">Complete your profile — {pct}% done</p>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Add your school, subjects, and contact details so we can personalise your experience.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <div className="hidden sm:flex items-center gap-1 text-xs font-medium text-gold-dark border border-gold/40 rounded-full px-3 py-1.5 bg-white">
+              Complete profile
+            </div>
+            <ChevronRight className="w-4 h-4 text-gold-dark group-hover:translate-x-0.5 transition-transform" />
+          </div>
+        </Link>
+      )}
 
       {/* Upcoming sessions */}
       <section aria-labelledby="upcoming-heading">
@@ -157,8 +186,10 @@ export default async function DashboardPage() {
           >
             <UserCircle className="w-5 h-5 text-navy flex-shrink-0" />
             <div>
-              <p className="font-semibold text-sm">Edit Profile</p>
-              <p className="text-xs text-muted-foreground">Update your details</p>
+              <p className="font-semibold text-sm">My Profile</p>
+              <p className="text-xs text-muted-foreground">
+                {pct < 100 ? `${pct}% complete` : 'Fully complete'}
+              </p>
             </div>
           </Link>
         </div>

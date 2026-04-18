@@ -17,8 +17,12 @@ model User {
   lastName       String        @default("")
   role           Role          @default(STUDENT)
   academicLevel  String?       // grade_11, grade_12, undergraduate, etc.
+  school         String?       // school or university name
+  subjects       String?       // comma-separated subjects, e.g. "Mathematics,Physics"
   phone          String?
+  whatsapp       String?
   avatarUrl      String?
+  bio            String?
   marketingOptin Boolean       @default(false)
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt

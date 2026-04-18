@@ -72,15 +72,6 @@ export default function SignupPage() {
       <h1 className="font-display text-3xl font-medium text-navy mb-1">Create an account</h1>
       <p className="text-muted-foreground text-sm mb-6">Start your mathematics journey today</p>
 
-      {/* Apple */}
-      <button type="button" onClick={() => signIn('apple', { callbackUrl: '/dashboard' })}
-        className={`${oauthBtn} bg-black hover:bg-zinc-800 text-white mb-2`}>
-        <svg width="17" height="20" viewBox="0 0 17 20" fill="currentColor" aria-hidden="true">
-          <path d="M14.28 10.73c-.02-2.27 1.85-3.36 1.93-3.42-1.05-1.54-2.69-1.75-3.27-1.77-1.39-.14-2.72.82-3.43.82-.71 0-1.8-.8-2.96-.78-1.52.02-2.92.88-3.7 2.23C1.04 10.51 2.14 15 3.9 17.27c.88 1.27 1.92 2.68 3.29 2.63 1.32-.05 1.82-.85 3.42-.85 1.59 0 2.05.85 3.44.83 1.42-.02 2.32-1.29 3.19-2.56.99-1.45 1.4-2.86 1.42-2.93-.03-.02-2.74-1.05-2.76-4.16h-.62ZM11.94 3.56C12.67 2.67 13.16 1.44 13 .2c-1.06.04-2.34.71-3.1 1.59-.68.78-1.28 2.03-1.12 3.22 1.18.09 2.38-.6 3.16-1.45Z"/>
-        </svg>
-        Continue with Apple
-      </button>
-
       {/* Google */}
       <button type="button" onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
         className={`${oauthBtn} border border-border bg-white hover:bg-cream text-ink mb-4`}>
