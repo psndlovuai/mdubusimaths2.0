@@ -3,7 +3,6 @@ import { profileCompleteness } from '@/lib/profile-utils'
 import { auth } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { ProfileForm } from '@/components/student/profile-form'
-import { DeleteAccountButton } from '@/components/student/delete-account-button'
 import { CheckCircle2, AlertCircle, FileText, ShieldCheck, RefreshCw, ExternalLink, Info } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -97,27 +96,6 @@ function DocumentsSection() {
   )
 }
 
-// ── Danger zone ───────────────────────────────────────────────────────────────
-function DangerZone({ email }: { email: string }) {
-  return (
-    <div className="bg-white rounded-xl shadow-card p-6 sm:p-8 border border-red-100">
-      <h2 className="font-semibold text-red-700 mb-1">Danger Zone</h2>
-      <p className="text-xs text-muted-foreground mb-5">
-        Irreversible actions. Please read carefully before proceeding.
-      </p>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 border border-red-100 rounded-xl bg-red-50/50">
-        <div>
-          <p className="text-sm font-medium text-ink">Delete my account</p>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            Permanently removes your account, profile, and all session history. This cannot be undone.
-          </p>
-        </div>
-        <DeleteAccountButton email={email} />
-      </div>
-    </div>
-  )
-}
-
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default async function ProfilePage() {
   const [authSession, profile] = await Promise.all([auth(), getMyProfile()])
@@ -130,7 +108,7 @@ export default async function ProfilePage() {
       <div>
         <h1 className="font-display text-3xl font-medium text-navy">My Profile</h1>
         <p className="text-muted-foreground text-sm mt-1">
-          Manage your details, review policies, and control your account.
+          Manage your personal details and review important policies.
         </p>
       </div>
 
@@ -144,9 +122,6 @@ export default async function ProfilePage() {
 
       {/* Documents & policies */}
       <DocumentsSection />
-
-      {/* Danger zone */}
-      <DangerZone email={profile.email} />
     </div>
   )
 }

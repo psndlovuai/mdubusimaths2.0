@@ -1,6 +1,6 @@
 import { auth } from '@/lib/auth'
 import { redirect } from 'next/navigation'
-import { StudentNav } from '@/components/student/student-nav'
+import { StudentSidebar } from '@/components/student/student-sidebar'
 
 export default async function StudentLayout({ children }: { children: React.ReactNode }) {
   const session = await auth()
@@ -10,10 +10,14 @@ export default async function StudentLayout({ children }: { children: React.Reac
 
   return (
     <div className="min-h-screen bg-cream">
-      <StudentNav firstName={firstName} />
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
-        {children}
-      </main>
+      <StudentSidebar firstName={firstName} />
+
+      {/* Offset for desktop sidebar */}
+      <div className="lg:pl-60">
+        <main className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+          {children}
+        </main>
+      </div>
     </div>
   )
 }
