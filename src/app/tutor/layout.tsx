@@ -1,6 +1,7 @@
 import { auth } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { TutorNav } from '@/components/tutor/tutor-nav'
+import { TUTOR_NAME } from '@/lib/constants'
 
 export default async function TutorLayout({ children }: { children: React.ReactNode }) {
   const session = await auth()
@@ -8,7 +9,7 @@ export default async function TutorLayout({ children }: { children: React.ReactN
 
   return (
     <div className="min-h-screen bg-cream">
-      <TutorNav />
+      <TutorNav tutorName={TUTOR_NAME} />
       <div className="md:pl-60 pb-20 md:pb-0">
         <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
           {children}
