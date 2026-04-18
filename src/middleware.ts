@@ -9,8 +9,8 @@ export default auth((req) => {
   const session = req.auth
   const isLoggedIn = !!session
 
-  // Tutor routes
-  if (nextUrl.pathname.startsWith('/tutor')) {
+  // Tutor routes — skip the login page itself to avoid redirect loops
+  if (nextUrl.pathname.startsWith('/tutor') && nextUrl.pathname !== '/tutor/login') {
     if (!isLoggedIn) return NextResponse.redirect(new URL('/tutor/login', req.url))
     if (session?.user.role !== 'TUTOR') return NextResponse.redirect(new URL('/dashboard', req.url))
     return NextResponse.next()
