@@ -4,10 +4,9 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Loader2 } from 'lucide-react'
+import { Loader2, CheckCircle } from 'lucide-react'
 import { registerStudent, registerSchema } from '@/app/actions/auth'
 
 type FormValues = z.infer<typeof registerSchema>
@@ -20,8 +19,9 @@ const ACADEMIC_LEVELS = [
 ]
 
 export default function SignupPage() {
-  const router   = useRouter()
+  const router      = useRouter()
   const [serverError, setServerError] = useState<string | null>(null)
+  const [success,     setSuccess]     = useState(false)
 
   const {
     register,
@@ -36,17 +36,19 @@ export default function SignupPage() {
       setServerError(result.error)
       return
     }
-    const signInResult = await signIn('credentials', {
-      email:    values.email,
-      password: values.password,
-      redirect: false,
-    })
-    if (signInResult?.error) {
-      setServerError('Account created! Please sign in.')
-      return
-    }
-    router.refresh()
-    router.push('/dashboard')
+    // Show success then redirect to login — avoids client-side signIn hang
+    setSuccess(true)
+    setTimeout(() => router.push('/login'), 2000)
+  }
+
+  if (success) {
+    return (
+      <div className="flex flex-col items-center text-center py-6 gap-4">
+        <CheckCircle className="w-12 h-12 text-green-500" />
+        <h2 className="font-display text-2xl font-medium text-navy">Account created!</h2>
+        <p className="text-muted-foreground text-sm">Taking you to sign in…</p>
+      </div>
+    )
   }
 
   return (
