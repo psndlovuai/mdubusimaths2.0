@@ -31,12 +31,6 @@ function formatTime(iso: string) {
     hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Johannesburg',
   })
 }
-function formatFull(iso: string) {
-  return new Date(iso).toLocaleDateString('en-ZA', {
-    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
-    timeZone: 'Africa/Johannesburg',
-  })
-}
 
 function sessionIcon(type: string) {
   if (type === 'group')      return <Users className="w-3.5 h-3.5" />
