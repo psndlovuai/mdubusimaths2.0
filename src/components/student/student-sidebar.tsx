@@ -24,13 +24,31 @@ const BOTTOM_NAV = [
   { href: '/settings', label: 'Settings', icon: Settings },
 ]
 
-interface Props { firstName: string; avatarUrl?: string | null; initials?: string }
+interface Props { firstName: string; avatarUrl?: string | null; initials?: string; email?: string }
 
-export function StudentSidebar({ firstName, avatarUrl, initials }: Props) {
+export function StudentSidebar({ firstName, avatarUrl, initials, email }: Props) {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   function closeMobile() { setMobileOpen(false) }
+
+  function NavLink({ href, label, icon: Icon }: { href: string; label: string; icon: React.ElementType }) {
+    const active = pathname === href || (href !== '/dashboard' && pathname.startsWith(href))
+    return (
+      <Link
+        href={href}
+        onClick={closeMobile}
+        className={cn(
+          'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors min-h-[44px]',
+          active ? 'bg-navy text-white' : 'text-muted-foreground hover:text-ink hover:bg-cream',
+        )}
+      >
+        <Icon className="w-4 h-4 flex-shrink-0" />
+        {label}
+        {active && <ChevronRight className="w-3.5 h-3.5 ml-auto opacity-60" />}
+      </Link>
+    )
+  }
 
   const sidebarContent = (
     <div className="flex flex-col h-full">
@@ -41,43 +59,9 @@ export function StudentSidebar({ firstName, avatarUrl, initials }: Props) {
         </Link>
       </div>
 
-      {/* User greeting */}
-      <div className="px-5 py-4 border-b border-border/60 flex items-center gap-3">
-        <div className="w-9 h-9 rounded-full overflow-hidden bg-navy flex items-center justify-center flex-shrink-0 ring-2 ring-gold/30">
-          {avatarUrl ? (
-            <Image src={avatarUrl} alt={firstName} width={36} height={36} className="object-cover w-full h-full" />
-          ) : (
-            <span className="text-xs font-bold text-white select-none">{initials ?? firstName.charAt(0).toUpperCase()}</span>
-          )}
-        </div>
-        <div className="min-w-0">
-          <p className="text-xs text-muted-foreground leading-none mb-0.5">Hi there,</p>
-          <p className="font-semibold text-ink text-sm truncate">{firstName}</p>
-        </div>
-      </div>
-
       {/* Main nav */}
       <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto" aria-label="Student navigation">
-        {MAIN_NAV.map(({ href, label, icon: Icon }) => {
-          const active = pathname === href || (href !== '/dashboard' && pathname.startsWith(href))
-          return (
-            <Link
-              key={href}
-              href={href}
-              onClick={closeMobile}
-              className={cn(
-                'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors min-h-[44px]',
-                active
-                  ? 'bg-navy text-white'
-                  : 'text-muted-foreground hover:text-ink hover:bg-cream',
-              )}
-            >
-              <Icon className="w-4 h-4 flex-shrink-0" />
-              {label}
-              {active && <ChevronRight className="w-3.5 h-3.5 ml-auto opacity-60" />}
-            </Link>
-          )
-        })}
+        {MAIN_NAV.map(item => <NavLink key={item.href} {...item} />)}
 
         {/* WhatsApp — external link */}
         <a
@@ -92,29 +76,9 @@ export function StudentSidebar({ firstName, avatarUrl, initials }: Props) {
         </a>
       </nav>
 
-      {/* Bottom: Profile, Settings, Sign out */}
-      <div className="px-3 py-3 border-t border-border/60 space-y-0.5">
-        {BOTTOM_NAV.map(({ href, label, icon: Icon }) => {
-          const active = pathname === href || pathname.startsWith(href)
-          return (
-            <Link
-              key={href}
-              href={href}
-              onClick={closeMobile}
-              className={cn(
-                'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors min-h-[44px]',
-                active
-                  ? 'bg-navy text-white'
-                  : 'text-muted-foreground hover:text-ink hover:bg-cream',
-              )}
-            >
-              <Icon className="w-4 h-4 flex-shrink-0" />
-              {label}
-              {active && <ChevronRight className="w-3.5 h-3.5 ml-auto opacity-60" />}
-            </Link>
-          )
-        })}
-
+      {/* Profile + Settings + Sign out */}
+      <div className="px-3 pb-2 space-y-0.5">
+        {BOTTOM_NAV.map(item => <NavLink key={item.href} {...item} />)}
         <button
           onClick={() => signOut({ callbackUrl: '/login' })}
           className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-muted-foreground hover:text-red-600 hover:bg-red-50 transition-colors w-full min-h-[44px]"
@@ -122,6 +86,21 @@ export function StudentSidebar({ firstName, avatarUrl, initials }: Props) {
           <LogOut className="w-4 h-4 flex-shrink-0" />
           Sign out
         </button>
+      </div>
+
+      {/* Bottom user strip */}
+      <div className="border-t border-border/60 px-4 py-3 flex items-center gap-3 bg-cream/50">
+        <div className="w-8 h-8 rounded-full overflow-hidden bg-navy flex items-center justify-center flex-shrink-0 ring-2 ring-white">
+          {avatarUrl ? (
+            <Image src={avatarUrl} alt={firstName} width={32} height={32} className="object-cover w-full h-full" />
+          ) : (
+            <span className="text-[11px] font-bold text-white select-none">{initials ?? firstName.charAt(0).toUpperCase()}</span>
+          )}
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="text-xs font-semibold text-ink truncate">{firstName}</p>
+          {email && <p className="text-[10px] text-muted-foreground truncate">{email}</p>}
+        </div>
       </div>
     </div>
   )
@@ -148,7 +127,7 @@ export function StudentSidebar({ firstName, avatarUrl, initials }: Props) {
         </button>
       </header>
 
-      {/* ── Mobile drawer overlay ── */}
+      {/* ── Mobile drawer ── */}
       {mobileOpen && (
         <>
           <div
