@@ -2,7 +2,6 @@
 
 import { z } from 'zod'
 import bcrypt from 'bcryptjs'
-import { signIn } from '@/lib/auth'
 import { prisma } from '@/infrastructure/prisma/client'
 
 export const registerSchema = z.object({
@@ -43,8 +42,6 @@ export async function registerStudent(input: RegisterInput): Promise<RegisterRes
     },
   })
 
-  // Sign in automatically — redirect handled by the caller
-  await signIn('credentials', { email, password, redirect: false })
-
+  // User created — client will call signIn() from next-auth/react
   return {}
 }

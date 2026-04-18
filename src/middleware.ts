@@ -12,7 +12,7 @@ export default auth((req) => {
   // Tutor routes — skip the login page itself to avoid redirect loops
   if (nextUrl.pathname.startsWith('/tutor') && nextUrl.pathname !== '/tutor/login') {
     if (!isLoggedIn) return NextResponse.redirect(new URL('/tutor/login', req.url))
-    if (session?.user.role !== 'TUTOR') return NextResponse.redirect(new URL('/dashboard', req.url))
+    if (session?.user.role !== 'TUTOR') return NextResponse.redirect(new URL('/', req.url))
     return NextResponse.next()
   }
 
@@ -24,7 +24,7 @@ export default auth((req) => {
     nextUrl.pathname.startsWith('/book')
   ) {
     if (!isLoggedIn) return NextResponse.redirect(new URL('/login', req.url))
-    if (session?.user.role !== 'STUDENT') return NextResponse.redirect(new URL('/tutor/dashboard', req.url))
+    if (session?.user.role !== 'STUDENT') return NextResponse.redirect(new URL('/', req.url))
     return NextResponse.next()
   }
 
