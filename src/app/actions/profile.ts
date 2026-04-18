@@ -10,6 +10,8 @@ export interface UpdateProfileInput {
   academicLevel?: string | null
   school?:        string | null
   subjects?:      string | null
+  preferredMode?: string | null
+  location?:      string | null
   phone?:         string | null
   whatsapp?:      string | null
   bio?:           string | null
@@ -37,6 +39,8 @@ export interface MyProfileData {
   academicLevel: string | null
   school:        string | null
   subjects:      string | null
+  preferredMode: string | null
+  location:      string | null
   phone:         string | null
   whatsapp:      string | null
   bio:           string | null
@@ -56,6 +60,8 @@ export async function getMyProfile(): Promise<MyProfileData | null> {
       academicLevel: true,
       school:        true,
       subjects:      true,
+      preferredMode: true,
+      location:      true,
       phone:         true,
       whatsapp:      true,
       bio:           true,
@@ -74,6 +80,7 @@ export function profileCompleteness(profile: MyProfileData): number {
     profile.academicLevel,
     profile.school,
     profile.subjects,
+    profile.preferredMode,
   ]
   const filled = fields.filter(Boolean).length
   return Math.round((filled / fields.length) * 100)

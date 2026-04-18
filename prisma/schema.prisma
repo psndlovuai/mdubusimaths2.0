@@ -19,6 +19,8 @@ model User {
   academicLevel  String?       // grade_11, grade_12, undergraduate, etc.
   school         String?       // school or university name
   subjects       String?       // comma-separated subjects, e.g. "Mathematics,Physics"
+  preferredMode  String?       // online | in_person | both
+  location       String?       // area/city for in-person sessions
   phone          String?
   whatsapp       String?
   avatarUrl      String?

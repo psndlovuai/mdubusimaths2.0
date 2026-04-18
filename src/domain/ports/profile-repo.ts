@@ -4,6 +4,8 @@ export interface UpdateProfileData {
   academicLevel?: string | null
   school?:        string | null
   subjects?:      string | null
+  preferredMode?: string | null
+  location?:      string | null
   phone?:         string | null
   whatsapp?:      string | null
   bio?:           string | null

@@ -11,6 +11,8 @@ export class PrismaProfileRepo implements IProfileRepo {
         ...(data.academicLevel  !== undefined && { academicLevel:  data.academicLevel }),
         ...(data.school         !== undefined && { school:         data.school }),
         ...(data.subjects       !== undefined && { subjects:       data.subjects }),
+        ...(data.preferredMode  !== undefined && { preferredMode:  data.preferredMode }),
+        ...(data.location       !== undefined && { location:       data.location }),
         ...(data.phone          !== undefined && { phone:          data.phone }),
         ...(data.whatsapp       !== undefined && { whatsapp:       data.whatsapp }),
         ...(data.bio            !== undefined && { bio:            data.bio }),

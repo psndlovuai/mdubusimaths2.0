@@ -8,6 +8,8 @@ export interface UpdateProfileInput {
     academicLevel?:  string | null
     school?:         string | null
     subjects?:       string | null
+    preferredMode?:  string | null
+    location?:       string | null
     phone?:          string | null
     whatsapp?:       string | null
     bio?:            string | null
@@ -27,6 +29,8 @@ export class UpdateProfile {
     if (d.academicLevel  !== undefined) update.academicLevel  = d.academicLevel
     if (d.school         !== undefined) update.school         = d.school
     if (d.subjects       !== undefined) update.subjects       = d.subjects
+    if (d.preferredMode  !== undefined) update.preferredMode  = d.preferredMode
+    if (d.location       !== undefined) update.location       = d.location
     if (d.phone          !== undefined) update.phone          = d.phone
     if (d.whatsapp       !== undefined) update.whatsapp       = d.whatsapp
     if (d.bio            !== undefined) update.bio            = d.bio

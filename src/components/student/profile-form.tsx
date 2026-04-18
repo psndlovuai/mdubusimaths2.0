@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { toast } from 'sonner'
-import { Loader2, Check, User, GraduationCap, Phone, Bell } from 'lucide-react'
+import { Loader2, Check, User, GraduationCap, Phone, Bell, MapPin } from 'lucide-react'
 import { updateProfile } from '@/app/actions/profile'
 import type { MyProfileData } from '@/app/actions/profile'
 
@@ -35,6 +35,8 @@ const schema = z.object({
   academicLevel:  z.string().nullable().optional(),
   school:         z.string().nullable().optional(),
   subjects:       z.string().nullable().optional(),
+  preferredMode:  z.string().nullable().optional(),
+  location:       z.string().nullable().optional(),
   bio:            z.string().max(300, 'Keep it under 300 characters').nullable().optional(),
   marketingOptin: z.boolean().optional(),
 })
@@ -72,12 +74,15 @@ export function ProfileForm({ defaultValues }: ProfileFormProps) {
       academicLevel:  defaultValues.academicLevel  ?? '',
       school:         defaultValues.school         ?? '',
       subjects:       defaultValues.subjects       ?? '',
+      preferredMode:  defaultValues.preferredMode  ?? '',
+      location:       defaultValues.location       ?? '',
       bio:            defaultValues.bio            ?? '',
       marketingOptin: defaultValues.marketingOptin,
     },
   })
 
-  const bio = watch('bio') ?? ''
+  const bio           = watch('bio')           ?? ''
+  const preferredMode = watch('preferredMode') ?? ''
 
   async function onSubmit(values: FormValues) {
     const result = await updateProfile({
@@ -88,6 +93,8 @@ export function ProfileForm({ defaultValues }: ProfileFormProps) {
       academicLevel:  values.academicLevel  || null,
       school:         values.school         || null,
       subjects:       values.subjects       || null,
+      preferredMode:  values.preferredMode  || null,
+      location:       values.location       || null,
       bio:            values.bio            || null,
       marketingOptin: values.marketingOptin,
     })
@@ -234,6 +241,50 @@ export function ProfileForm({ defaultValues }: ProfileFormProps) {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Session Preference ───────────────────────────────────────────── */}
+      <section>
+        <SectionHeading icon={MapPin} title="Session Preference" />
+        <div className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-ink mb-2">How would you like to learn?</label>
+            <div className="grid grid-cols-3 gap-2">
+              {([
+                { value: 'online',    label: 'Online' },
+                { value: 'in_person', label: 'In-person' },
+                { value: 'both',      label: 'Both' },
+              ] as const).map(opt => (
+                <label
+                  key={opt.value}
+                  className={`flex items-center justify-center gap-2 border-2 rounded-xl py-3 text-sm font-medium cursor-pointer transition-all ${
+                    preferredMode === opt.value
+                      ? 'border-navy bg-navy/5 text-navy'
+                      : 'border-border bg-white text-muted-foreground hover:border-navy/40'
+                  }`}
+                >
+                  <input type="radio" className="sr-only" value={opt.value} {...register('preferredMode')} />
+                  {opt.label}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {(preferredMode === 'in_person' || preferredMode === 'both') && (
+            <div>
+              <label htmlFor="location" className="block text-sm font-medium text-ink mb-1.5">
+                Your area / city
+              </label>
+              <input
+                id="location"
+                type="text"
+                placeholder="e.g. Johannesburg, Pretoria, Cape Town"
+                className={inputCls}
+                {...register('location')}
+              />
+            </div>
+          )}
         </div>
       </section>
 

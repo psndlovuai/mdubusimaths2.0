@@ -8,7 +8,12 @@ const schema = z.object({
   lastName:      z.string().min(1, 'Last name is required'),
   email:         z.string().email('Enter a valid email address'),
   password:      z.string().min(8, 'Password must be at least 8 characters'),
+  phone:         z.string().min(1, 'Phone number is required'),
   academicLevel: z.string().min(1, 'Please select an academic level'),
+  school:        z.string().optional(),
+  subjects:      z.string().optional(),
+  preferredMode: z.enum(['online', 'in_person', 'both']).optional(),
+  location:      z.string().optional(),
 })
 
 export async function POST(req: NextRequest) {
@@ -23,7 +28,10 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const { firstName, lastName, email, password, academicLevel } = parsed.data
+    const {
+      firstName, lastName, email, password,
+      phone, academicLevel, school, subjects, preferredMode, location,
+    } = parsed.data
 
     const existing = await prisma.user.findUnique({ where: { email } })
     if (existing) {
@@ -36,7 +44,19 @@ export async function POST(req: NextRequest) {
     const hashed = await bcrypt.hash(password, 10)
 
     await prisma.user.create({
-      data: { email, firstName, lastName, password: hashed, academicLevel, role: 'STUDENT' },
+      data: {
+        email,
+        firstName,
+        lastName,
+        password: hashed,
+        role: 'STUDENT',
+        phone:         phone         || null,
+        academicLevel: academicLevel || null,
+        school:        school        || null,
+        subjects:      subjects      || null,
+        preferredMode: preferredMode || null,
+        location:      location      || null,
+      },
     })
 
     return NextResponse.json({ success: true })
