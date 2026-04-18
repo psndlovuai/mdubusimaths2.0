@@ -26,22 +26,26 @@ export async function registerStudent(input: RegisterInput): Promise<RegisterRes
 
   const { firstName, lastName, email, password, academicLevel } = parsed.data
 
-  const existing = await prisma.user.findUnique({ where: { email } })
-  if (existing) return { error: 'An account with this email already exists' }
+  try {
+    const existing = await prisma.user.findUnique({ where: { email } })
+    if (existing) return { error: 'An account with this email already exists' }
 
-  const hashed = await bcrypt.hash(password, 12)
+    const hashed = await bcrypt.hash(password, 12)
 
-  await prisma.user.create({
-    data: {
-      email,
-      firstName,
-      lastName,
-      password: hashed,
-      academicLevel,
-      role: 'STUDENT',
-    },
-  })
+    await prisma.user.create({
+      data: {
+        email,
+        firstName,
+        lastName,
+        password: hashed,
+        academicLevel,
+        role: 'STUDENT',
+      },
+    })
+  } catch (err) {
+    console.error('[registerStudent]', err)
+    return { error: 'Could not create account. Please try again.' }
+  }
 
-  // User created — client will call signIn() from next-auth/react
   return {}
 }

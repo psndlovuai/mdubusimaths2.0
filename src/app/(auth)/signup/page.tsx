@@ -31,14 +31,17 @@ export default function SignupPage() {
 
   async function onSubmit(values: FormValues) {
     setServerError(null)
-    const result = await registerStudent(values)
-    if (result.error) {
-      setServerError(result.error)
-      return
+    try {
+      const result = await registerStudent(values)
+      if (result.error) {
+        setServerError(result.error)
+        return
+      }
+      setSuccess(true)
+      setTimeout(() => router.push('/login'), 2000)
+    } catch {
+      setServerError('Something went wrong. Please try again.')
     }
-    // Show success then redirect to login — avoids client-side signIn hang
-    setSuccess(true)
-    setTimeout(() => router.push('/login'), 2000)
   }
 
   if (success) {
