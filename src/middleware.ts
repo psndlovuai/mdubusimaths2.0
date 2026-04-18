@@ -1,5 +1,8 @@
-import { auth } from '@/lib/auth'
+import NextAuth from 'next-auth'
+import { authConfig } from '@/lib/auth.config'
 import { NextResponse } from 'next/server'
+
+const { auth } = NextAuth(authConfig)
 
 export default auth((req) => {
   const { nextUrl } = req
@@ -16,8 +19,8 @@ export default auth((req) => {
   // Student dashboard routes
   if (
     nextUrl.pathname.startsWith('/dashboard') ||
-    nextUrl.pathname.startsWith('/sessions') ||
-    nextUrl.pathname.startsWith('/profile') ||
+    nextUrl.pathname.startsWith('/sessions')  ||
+    nextUrl.pathname.startsWith('/profile')   ||
     nextUrl.pathname.startsWith('/book')
   ) {
     if (!isLoggedIn) return NextResponse.redirect(new URL('/login', req.url))
