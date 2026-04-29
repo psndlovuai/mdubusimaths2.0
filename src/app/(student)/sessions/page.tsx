@@ -1,6 +1,8 @@
 import { auth } from '@/lib/auth'
 import { container } from '@/infrastructure/container'
 import { CancelSessionButton } from '@/components/student/cancel-session-button'
+import { TYPE_PILL, TYPE_BORDER } from '@/lib/session-colors'
+import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = { title: 'My Sessions' }
@@ -63,7 +65,7 @@ export default async function SessionsPage() {
               const isFuture    = new Date(s.startTime) > now
               const cancellable = s.status === 'confirmed' && isFuture
               return (
-                <article key={s.id} className="bg-white rounded-xl shadow-card p-5 space-y-3">
+                <article key={s.id} className={cn('bg-white rounded-xl shadow-card p-5 space-y-3 border-l-4', TYPE_BORDER[s.sessionType] ?? 'border-l-navy')}>
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0">
                       <p className="font-semibold text-ink truncate">{s.subject}</p>
@@ -71,9 +73,12 @@ export default async function SessionsPage() {
                     </div>
                     <StatusBadge status={s.status} />
                   </div>
-                  <div className="text-sm text-muted-foreground space-y-1">
-                    <p>{formatDate(s.startTime)}</p>
-                    <p>{s.sessionTypeLabel} · {s.durationMin} min · {s.amountFormatted}</p>
+                  <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                    <span className={cn('text-xs font-medium px-2 py-0.5 rounded-full', TYPE_PILL[s.sessionType] ?? '')}>
+                      {s.sessionTypeLabel}
+                    </span>
+                    <span>{formatDate(s.startTime)}</span>
+                    <span>· {s.durationMin} min · {s.amountFormatted}</span>
                   </div>
                   {cancellable && (
                     <CancelSessionButton sessionId={s.id} subject={s.subject} />
@@ -109,7 +114,11 @@ export default async function SessionsPage() {
                       <td className="px-4 py-3 text-ink whitespace-nowrap">{formatDate(s.startTime)}</td>
                       <td className="px-4 py-3 font-medium text-ink">{s.subject}</td>
                       <td className="px-4 py-3 text-muted-foreground">{s.topic ?? '—'}</td>
-                      <td className="px-4 py-3 whitespace-nowrap text-muted-foreground">{s.sessionTypeLabel}</td>
+                      <td className="px-4 py-3 whitespace-nowrap">
+                        <span className={cn('text-xs font-medium px-2 py-0.5 rounded-full', TYPE_PILL[s.sessionType] ?? 'text-muted-foreground')}>
+                          {s.sessionTypeLabel}
+                        </span>
+                      </td>
                       <td className="px-4 py-3 text-muted-foreground">{s.durationMin} min</td>
                       <td className="px-4 py-3 whitespace-nowrap text-ink">{s.amountFormatted}</td>
                       <td className="px-4 py-3"><StatusBadge status={s.status} /></td>

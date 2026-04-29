@@ -7,7 +7,7 @@ import { z } from 'zod'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Loader2, Mail } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 
 const schema = z.object({
   email:    z.string().email('Enter a valid email'),
@@ -17,11 +17,8 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>
 
 export default function LoginPage() {
-  const router   = useRouter()
-  const [authError,   setAuthError]   = useState<string | null>(null)
-  const [magicEmail,  setMagicEmail]  = useState('')
-  const [magicSent,   setMagicSent]   = useState(false)
-  const [magicLoading,setMagicLoading]= useState(false)
+  const router = useRouter()
+  const [authError, setAuthError] = useState<string | null>(null)
 
   const {
     register,
@@ -43,15 +40,6 @@ export default function LoginPage() {
     router.push('/dashboard')
   }
 
-  async function handleMagicLink(e: React.FormEvent) {
-    e.preventDefault()
-    if (!magicEmail) return
-    setMagicLoading(true)
-    await signIn('resend', { email: magicEmail, redirect: false, callbackUrl: '/dashboard' })
-    setMagicSent(true)
-    setMagicLoading(false)
-  }
-
   return (
     <>
       <h1 className="font-display text-3xl font-medium text-navy mb-1">
@@ -63,7 +51,7 @@ export default function LoginPage() {
 
       {/* Google */}
       <button type="button" onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
-        className="w-full flex items-center justify-center gap-3 border border-border bg-white hover:bg-cream text-ink rounded-xl py-3 text-sm font-medium min-h-[44px] mb-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold">
+        className="w-full flex items-center justify-center gap-3 border border-border bg-white hover:bg-cream text-ink rounded-xl py-3 text-sm font-medium min-h-[44px] mb-6 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold">
         <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
           <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/>
           <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/>
@@ -73,32 +61,7 @@ export default function LoginPage() {
         Continue with Google
       </button>
 
-      {/* Email magic link */}
-      {magicSent ? (
-        <div className="w-full text-center bg-green/10 border border-green/20 rounded-xl py-3 px-4 text-sm text-green-700 mb-3">
-          Check your email — we sent a sign-in link to <strong>{magicEmail}</strong>
-        </div>
-      ) : (
-        <form onSubmit={handleMagicLink} className="flex gap-2 mb-3">
-          <input
-            type="email"
-            placeholder="Email for magic link"
-            value={magicEmail}
-            onChange={e => setMagicEmail(e.target.value)}
-            className="flex-1 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold min-h-[44px]"
-          />
-          <button
-            type="submit"
-            disabled={magicLoading || !magicEmail}
-            className="flex items-center gap-1.5 bg-navy hover:bg-navy-dark text-white text-sm font-semibold rounded-xl px-4 min-h-[44px] transition-colors disabled:opacity-50"
-          >
-            {magicLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Mail className="w-4 h-4" />}
-            Send link
-          </button>
-        </form>
-      )}
-
-      <div className="relative flex items-center gap-3 mb-4">
+      <div className="relative flex items-center gap-3 mb-6">
         <div className="flex-1 h-px bg-border" />
         <span className="text-xs text-muted-foreground">or sign in with password</span>
         <div className="flex-1 h-px bg-border" />

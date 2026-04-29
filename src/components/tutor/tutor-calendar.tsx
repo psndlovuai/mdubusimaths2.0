@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ChevronLeft, ChevronRight, Video, Clock, Users, Calendar, User } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cn, formatTime } from '@/lib/utils'
+import { TYPE_DOT, TYPE_BORDER, TYPE_PILL, LEGEND } from '@/lib/session-colors'
 import type { BookingDto } from '@/application/dto/booking-dto'
 
 const DAYS   = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -11,43 +12,6 @@ const MONTHS = [
   'January','February','March','April','May','June',
   'July','August','September','October','November','December',
 ]
-
-// Colour coding by session type
-const TYPE_COLORS: Record<string, string> = {
-  meet_greet: 'bg-green-400',
-  once_off:   'bg-blue-400',
-  group:      'bg-purple-400',
-  monthly:    'bg-amber-400',
-}
-
-// Richer left-border colour for the upcoming list cards
-const TYPE_BORDER: Record<string, string> = {
-  meet_greet: 'border-l-green-400',
-  once_off:   'border-l-blue-400',
-  group:      'border-l-purple-400',
-  monthly:    'border-l-amber-400',
-}
-
-// Pill badge for type
-const TYPE_PILL: Record<string, string> = {
-  meet_greet: 'bg-green-50 text-green-700 border border-green-200',
-  once_off:   'bg-blue-50 text-blue-700 border border-blue-200',
-  group:      'bg-purple-50 text-purple-700 border border-purple-200',
-  monthly:    'bg-amber-50 text-amber-700 border border-amber-200',
-}
-
-const LEGEND = [
-  { key: 'meet_greet', label: 'Meet & Greet' },
-  { key: 'once_off',   label: 'Once-off' },
-  { key: 'group',      label: 'Group' },
-  { key: 'monthly',    label: 'Monthly' },
-]
-
-function formatTime(iso: string) {
-  return new Date(iso).toLocaleTimeString('en-ZA', {
-    hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Johannesburg',
-  })
-}
 
 function sessionIcon(type: string) {
   if (type === 'group')      return <Users className="w-3.5 h-3.5" />
@@ -152,7 +116,7 @@ export function TutorCalendar({ sessions }: Props) {
                   {daySessions.slice(0, 3).map(s => (
                     <span
                       key={s.id}
-                      className={cn('w-2 h-2 rounded-full flex-shrink-0', TYPE_COLORS[s.sessionType] ?? 'bg-navy')}
+                      className={cn('w-2 h-2 rounded-full flex-shrink-0', TYPE_DOT[s.sessionType] ?? 'bg-navy')}
                       title={`${s.sessionTypeLabel}${s.studentName ? ` — ${s.studentName}` : ''}`}
                     />
                   ))}
@@ -171,7 +135,7 @@ export function TutorCalendar({ sessions }: Props) {
         <div className="px-5 py-3 border-t border-border flex flex-wrap gap-4">
           {LEGEND.map(({ key, label }) => (
             <span key={key} className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              <span className={cn('w-2.5 h-2.5 rounded-full', TYPE_COLORS[key])} />
+              <span className={cn('w-2.5 h-2.5 rounded-full', TYPE_DOT[key])} />
               {label}
             </span>
           ))}

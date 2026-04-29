@@ -6,6 +6,7 @@ import { Loader2, X, Search, Check, Ban } from 'lucide-react'
 import { cancelBooking, markSessionComplete } from '@/app/actions/booking'
 import type { BookingDto } from '@/application/dto/booking-dto'
 import { cn } from '@/lib/utils'
+import { TYPE_PILL } from '@/lib/session-colors'
 
 interface BookingsTableProps {
   bookings: BookingDto[]
@@ -170,8 +171,8 @@ function ActionCell({ booking }: { booking: BookingDto }) {
 }
 
 // ── Main table component ───────────────────────────────────────────────────────
-const STATUSES = ['All', 'confirmed', 'cancelled', 'completed'] as const
-const TYPES    = ['All', 'once_off', 'monthly', 'group']        as const
+const STATUSES = ['All', 'confirmed', 'cancelled', 'completed']              as const
+const TYPES    = ['All', 'meet_greet', 'once_off', 'monthly', 'group']      as const
 
 export function BookingsTable({ bookings }: BookingsTableProps) {
   const [search,     setSearch]     = useState('')
@@ -189,9 +190,10 @@ export function BookingsTable({ bookings }: BookingsTableProps) {
   }, [bookings, search, statusFilter, typeFilter])
 
   const TYPE_LABELS: Record<string, string> = {
-    once_off: 'Once-off',
-    monthly:  'Monthly',
-    group:    'Group',
+    meet_greet: 'Meet & Greet',
+    once_off:   'Once-off',
+    monthly:    'Monthly',
+    group:      'Group',
   }
 
   return (
@@ -271,8 +273,10 @@ export function BookingsTable({ bookings }: BookingsTableProps) {
                     <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
                       {formatDate(b.startTime)}
                     </td>
-                    <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
-                      {b.sessionTypeLabel}
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <span className={cn('text-xs font-medium px-2 py-0.5 rounded-full', TYPE_PILL[b.sessionType] ?? 'text-muted-foreground')}>
+                        {b.sessionTypeLabel}
+                      </span>
                     </td>
                     <td className="px-4 py-3 text-muted-foreground">{b.durationMin} min</td>
                     <td className="px-4 py-3 text-ink whitespace-nowrap">{b.amountFormatted}</td>

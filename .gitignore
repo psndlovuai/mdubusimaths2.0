@@ -40,3 +40,6 @@ next-env.d.ts
 # prisma
 prisma/migrations/dev.db
 prisma/dev.db
+
+# cleanup audit backup — local safety net, never commit
+/CLEANUP_BACKUP/

@@ -1,18 +1,12 @@
 import { auth } from '@/lib/auth'
 import { container } from '@/infrastructure/container'
 import { SessionCalendar } from '@/components/student/session-calendar'
+import { greeting } from '@/lib/utils'
 import { BookOpen, TrendingUp, CalendarCheck } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = { title: 'Dashboard' }
-
-function greeting(): string {
-  const h = new Date().getHours()
-  if (h < 12) return 'Good morning'
-  if (h < 17) return 'Good afternoon'
-  return 'Good evening'
-}
 
 export default async function DashboardPage() {
   const session   = await auth()

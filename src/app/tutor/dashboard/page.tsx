@@ -2,24 +2,14 @@ import { container } from '@/infrastructure/container'
 import { toBookingDto } from '@/application/dto/mappers'
 import { TutorCalendar } from '@/components/tutor/tutor-calendar'
 import { TUTOR_NAME } from '@/lib/constants'
+import { greeting, formatTime } from '@/lib/utils'
 import { TrendingUp, CalendarCheck, Users, DollarSign } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = { title: 'Tutor Dashboard' }
 
-function greeting() {
-  const h = new Date().getHours()
-  return h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening'
-}
-
 function formatRevenue(cents: number) {
   return `R${(cents / 100).toLocaleString('en-ZA', { minimumFractionDigits: 0 })}`
-}
-
-function formatTime(iso: string) {
-  return new Date(iso).toLocaleTimeString('en-ZA', {
-    hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Johannesburg',
-  })
 }
 
 export default async function TutorDashboardPage() {
