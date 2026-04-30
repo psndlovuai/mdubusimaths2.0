@@ -1,6 +1,6 @@
 # Codebase Audit & Cleanup Report
 **Date:** 2026-04-29  
-**Project:** Mdubusi Mathematics (Next.js 14 / TypeScript)  
+**Project:** Mdubusi Statistics (Next.js 14 / TypeScript)  
 **Auditor:** Senior Dev Audit (Claude Code)
 
 ---

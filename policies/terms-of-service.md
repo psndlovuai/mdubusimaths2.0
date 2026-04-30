@@ -9,9 +9,9 @@
 
 ## 1. Who we are
 
-These Terms of Service ("**Terms**") govern your use of the services offered by **Mdubusi Mathematics** ("**we**", "**us**", "**our**"), operated by [PS Ndlovu — sole proprietor / Mdubusi Mathematics (Pty) Ltd, Registration No. YYYY/NNNNNN/NN] of [street address, city, postal code], South Africa.
+These Terms of Service ("**Terms**") govern your use of the services offered by **Mdubusi Statistics** ("**we**", "**us**", "**our**"), operated by [PS Ndlovu — sole proprietor / Mdubusi Statistics (Pty) Ltd, Registration No. YYYY/NNNNNN/NN] of [street address, city, postal code], South Africa.
 
-By creating an account, booking a session, or otherwise using our website at [https://mdubusimaths.com](https://mdubusimaths.com) (the "**Platform**") or our tutoring services (the "**Services**"), you ("**you**", "**the Student**") agree to these Terms. If you do not agree, you must not use the Platform or Services.
+By creating an account, booking a session, or otherwise using our website at [https://mdubusistats.com](https://mdubusistats.com) (the "**Platform**") or our tutoring services (the "**Services**"), you ("**you**", "**the Student**") agree to these Terms. If you do not agree, you must not use the Platform or Services.
 
 If you are under 18, you may only use the Platform with the consent and under the supervision of a parent or legal guardian, who accepts these Terms on your behalf.
 
@@ -42,7 +42,7 @@ To book a session you must register an account with accurate, current informatio
 
 - Keeping your login credentials confidential.
 - All activity that occurs under your account.
-- Notifying us immediately at [support@mdubusimaths.com] of any unauthorised use.
+- Notifying us immediately at [support@mdubusistats.com] of any unauthorised use.
 
 We may suspend or terminate an account that provides false information, is used to abuse the Platform, or is used to harass our tutors or other students.
 
@@ -108,7 +108,7 @@ All content on the Platform — including text, graphics, logos, code, lesson no
 
 You may **not** redistribute, sublicense, sell, reverse-engineer, or publicly display any Platform content without our prior written consent.
 
-The trademarks "Mdubusi" and "Mdubusi Mathematics", together with the associated logos, are our property.
+The trademarks "Mdubusi" and "Mdubusi Statistics", together with the associated logos, are our property.
 
 ---
 
@@ -154,7 +154,7 @@ You agree to indemnify us against any loss, damage, or claim arising from your b
 
 We may suspend or terminate your account and refuse future Services if you breach these Terms, if we are required to do so by law, or if we reasonably suspect fraud or abuse. Any pre-paid but undelivered sessions at the time of lawful termination will be refunded pro-rata in accordance with the [Refund Policy](./refund-policy.md).
 
-You may close your account at any time by emailing [support@mdubusimaths.com].
+You may close your account at any time by emailing [support@mdubusistats.com].
 
 ---
 
@@ -166,7 +166,7 @@ We may update these Terms from time to time. Material changes will be notified b
 
 ## 16. Dispute resolution
 
-If a dispute arises, we encourage you first to contact us at [support@mdubusimaths.com] so we can try to resolve it directly. If that fails, you may:
+If a dispute arises, we encourage you first to contact us at [support@mdubusistats.com] so we can try to resolve it directly. If that fails, you may:
 
 - Refer the matter to the South African Consumer Goods and Services Ombud (CGSO), where the dispute falls within its jurisdiction, at [https://www.cgso.org.za](https://www.cgso.org.za); or
 - Lodge a complaint with the National Consumer Commission at [https://www.thencc.gov.za](https://www.thencc.gov.za); or
@@ -198,7 +198,7 @@ If a force majeure event prevents a scheduled session from taking place, the ses
 - **No waiver** — Our failure to enforce a provision is not a waiver of our right to enforce it later.
 - **Entire agreement** — These Terms, together with the Privacy Policy, Cancellation Policy, and Refund Policy, constitute the entire agreement between us.
 - **Assignment** — You may not assign your rights under these Terms. We may assign ours on notice to you.
-- **Notices** — Written notices to us may be sent to [support@mdubusimaths.com]. We will send notices to the email address on your account.
+- **Notices** — Written notices to us may be sent to [support@mdubusistats.com]. We will send notices to the email address on your account.
 - **Electronic communications** — In accordance with the Electronic Communications and Transactions Act 25 of 2002, you consent to receiving communications from us in electronic form and to entering into this agreement electronically. Electronic records and digital signatures (including clickwrap acceptance) carry the same legal effect as their paper equivalents.
 - **Currency** — All amounts are in South African Rand (ZAR) unless otherwise stated.
 - **Language** — These Terms are prepared in English. Any translation is provided for convenience; the English version prevails in the event of conflict.
@@ -207,7 +207,7 @@ If a force majeure event prevents a scheduled session from taking place, the ses
 
 ## 19. Contact
 
-**Mdubusi Mathematics**
-Email: [support@mdubusimaths.com]
-Website: [https://mdubusimaths.com]
+**Mdubusi Statistics**
+Email: [support@mdubusistats.com]
+Website: [https://mdubusistats.com]
 Postal address: [street address, city, postal code, South Africa]

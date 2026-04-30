@@ -27,7 +27,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     // ── Email magic link via Resend ───────────────────────────────────────
     Resend({
       apiKey: process.env.RESEND_API_KEY,
-      from:   process.env.RESEND_FROM_EMAIL ?? 'hello@mdubusimaths.com',
+      from:   process.env.RESEND_FROM_EMAIL ?? 'hello@mdubusistats.com',
     }),
 
     // ── Email + password ──────────────────────────────────────────────────

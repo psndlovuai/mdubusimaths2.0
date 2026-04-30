@@ -252,7 +252,7 @@ export function ProfileForm({ defaultValues }: ProfileFormProps) {
           <div>
             <p className="text-sm font-medium text-ink">Study tips & offers</p>
             <p className="text-xs text-muted-foreground mt-0.5">
-              Receive exam prep tips, session specials, and study resources from Mdubusi Mathematics.
+              Receive exam prep tips, session specials, and study resources from Mdubusi Statistics.
             </p>
           </div>
         </label>

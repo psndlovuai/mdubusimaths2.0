@@ -64,7 +64,7 @@ const DOCUMENTS = [
   },
   {
     icon:     Info,
-    title:    'About Mdubusi Mathematics',
+    title:    'About Mdubusi Statistics',
     subtitle: 'Our tutoring approach',
     href:     '/',
   },

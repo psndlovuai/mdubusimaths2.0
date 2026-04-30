@@ -68,7 +68,7 @@ export default function TutorLoginPage() {
               autoComplete="email"
               aria-describedby={errors.email ? 'email-error' : undefined}
               className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-gold min-h-[44px]"
-              placeholder="you@mdubusimaths.com"
+              placeholder="you@mdubusistats.com"
               {...register('email')}
             />
             {errors.email && (

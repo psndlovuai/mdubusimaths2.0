@@ -92,8 +92,8 @@ export default function EnquirePage() {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground mb-0.5">Email</p>
-                      <a href="mailto:info@mdubusimaths.com" className="text-navy font-medium text-sm hover:underline">
-                        info@mdubusimaths.com
+                      <a href="mailto:info@mdubusistats.com" className="text-navy font-medium text-sm hover:underline">
+                        info@mdubusistats.com
                       </a>
                     </div>
                   </li>
@@ -250,7 +250,7 @@ export default function EnquirePage() {
 
                   <p className="text-xs text-center text-muted-foreground">
                     Your enquiry is sent directly to{' '}
-                    <span className="text-navy font-medium">info@mdubusimaths.com</span>.
+                    <span className="text-navy font-medium">info@mdubusistats.com</span>.
                     We&apos;ll reply within 24 hours.
                   </p>
                 </form>

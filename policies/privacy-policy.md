@@ -9,18 +9,18 @@
 
 ## 1. Who we are and our role
 
-**Mdubusi Mathematics** ("**we**", "**us**"), operated by [PS Ndlovu / Mdubusi Mathematics (Pty) Ltd] of [address], is the **Responsible Party** (as defined in POPIA) for the personal information we process about you.
+**Mdubusi Statistics** ("**we**", "**us**"), operated by [PS Ndlovu / Mdubusi Statistics (Pty) Ltd] of [address], is the **Responsible Party** (as defined in POPIA) for the personal information we process about you.
 
 Our Information Officer is:
 - **Name:** [PS Ndlovu]
-- **Email:** [privacy@mdubusimaths.com]
+- **Email:** [privacy@mdubusistats.com]
 - **Postal address:** [address]
 
 ---
 
 ## 2. Scope
 
-This Privacy Policy explains what personal information we collect when you visit [https://mdubusimaths.com] ("**the Platform**") or book a tutoring session, why we collect it, how we use and share it, and the rights you have in respect of it.
+This Privacy Policy explains what personal information we collect when you visit [https://mdubusistats.com] ("**the Platform**") or book a tutoring session, why we collect it, how we use and share it, and the rights you have in respect of it.
 
 By using the Platform you acknowledge the processing described in this Policy. Where the law requires, we will obtain your specific consent before processing.
 
@@ -105,7 +105,7 @@ We delete or anonymise data once the retention period ends, unless law requires 
 
 ## 7. Direct marketing
 
-We will only send you direct marketing communications — whether by email, SMS, or automated call — where you have given us your explicit prior consent in accordance with section 69 of POPIA, or where you are an existing customer and the marketing relates to our own similar services. Every marketing email contains a one-click unsubscribe link; you may also withdraw consent at any time by emailing [privacy@mdubusimaths.com].
+We will only send you direct marketing communications — whether by email, SMS, or automated call — where you have given us your explicit prior consent in accordance with section 69 of POPIA, or where you are an existing customer and the marketing relates to our own similar services. Every marketing email contains a one-click unsubscribe link; you may also withdraw consent at any time by emailing [privacy@mdubusistats.com].
 
 Transactional messages — booking confirmations, session reminders, payment receipts, policy updates, and security notices — are **not** direct marketing. You cannot opt out of these while you have an active account, because they are necessary to deliver the Services.
 
@@ -142,7 +142,7 @@ Under POPIA you have the right to:
 
 ### 9.1 How to submit a request
 
-Email [privacy@mdubusimaths.com] with:
+Email [privacy@mdubusistats.com] with:
 
 1. The right you wish to exercise.
 2. Enough detail to identify your account (the email address you signed up with is usually sufficient).
@@ -180,7 +180,7 @@ We may update this Policy from time to time. Material changes will be posted on 
 
 ## 14. Contact
 
-**Mdubusi Mathematics**
+**Mdubusi Statistics**
 Information Officer: [PS Ndlovu]
-Email: [privacy@mdubusimaths.com]
-General support: [support@mdubusimaths.com]
+Email: [privacy@mdubusistats.com]
+General support: [support@mdubusistats.com]

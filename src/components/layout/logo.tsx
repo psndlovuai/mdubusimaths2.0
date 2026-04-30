@@ -31,7 +31,7 @@ export function Logo({
   return (
     <Image
       src={src}
-      alt="Mdubusi Mathematics"
+      alt="Mdubusi Statistics"
       width={w}
       height={h}
       priority={priority}

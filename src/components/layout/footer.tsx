@@ -57,7 +57,7 @@ export function Footer() {
         <div className="md:col-span-1">
           <Logo variant="on-dark" className="h-10 w-auto mb-4" />
           <p className="text-white/50 text-sm leading-relaxed max-w-xs mt-4">
-            Expert mathematics tutoring for South African students — Grades 11, 12, and university level.
+            Expert statistics tutoring for South African students — Grades 11, 12, and university level.
           </p>
 
           {/* Social icons */}
@@ -128,10 +128,10 @@ export function Footer() {
             </li>
             <li>
               <a
-                href="mailto:support@mdubusimaths.co.za"
+                href="mailto:support@mdubusistats.com"
                 className="text-sm text-white/60 hover:text-white transition-colors"
               >
-                support@mdubusimaths.co.za
+                support@mdubusistats.com
               </a>
             </li>
           </ul>

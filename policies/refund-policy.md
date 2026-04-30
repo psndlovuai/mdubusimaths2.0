@@ -38,13 +38,13 @@ A technical failure on **your** side (your internet, your device, your power) is
 
 ### 2.4 Duplicate or erroneous charges
 
-If you are charged twice for the same session, or charged in error, email [support@mdubusimaths.com] with the transaction reference. We will verify with Paystack and refund within **7 business days** of confirmation.
+If you are charged twice for the same session, or charged in error, email [support@mdubusistats.com] with the transaction reference. We will verify with Paystack and refund within **7 business days** of confirmation.
 
 ### 2.5 Statutory cooling-off (ECT Act section 44)
 
 Where section 44 of the ECT Act applies — principally, where you have entered into an electronic transaction for goods or services and the service has **not yet begun** — you have a right to cancel within **7 days** of payment without reason or penalty, and to receive a full refund. A cancellation under this clause:
 
-- Must be made by email to [support@mdubusimaths.com] or via your dashboard;
+- Must be made by email to [support@mdubusistats.com] or via your dashboard;
 - Does **not** apply once the session has already started or been delivered;
 - Does **not** apply to group sessions once other students have booked in reliance on your booking (in which case your cancellation is handled under the Cancellation Policy).
 
@@ -110,7 +110,7 @@ If a session is paid for by a parent, employer, or other third party, the right 
 
 ## 8. Chargebacks and disputes
 
-If you believe a charge is incorrect, please contact us first at [support@mdubusimaths.com] before raising a chargeback with your bank. We almost always resolve disputes faster directly. Chargebacks raised without contacting us, or raised after we have already issued a refund, may result in your account being suspended.
+If you believe a charge is incorrect, please contact us first at [support@mdubusistats.com] before raising a chargeback with your bank. We almost always resolve disputes faster directly. Chargebacks raised without contacting us, or raised after we have already issued a refund, may result in your account being suspended.
 
 ---
 
@@ -122,6 +122,6 @@ This policy does not limit your rights under the Consumer Protection Act 68 of 2
 
 ## 10. Contact
 
-**Mdubusi Mathematics**
-Email: [support@mdubusimaths.com]
-Website: [https://mdubusimaths.com]
+**Mdubusi Statistics**
+Email: [support@mdubusistats.com]
+Website: [https://mdubusistats.com]

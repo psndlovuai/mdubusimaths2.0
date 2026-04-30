@@ -22,7 +22,7 @@ export class ResendMailer implements IMailer {
 
     try {
       const res = await getResendClient().emails.send({
-        from: `Mdubusi Mathematics <${process.env.RESEND_FROM_EMAIL ?? 'hello@mdubusimaths.com'}>`,
+        from: `Mdubusi Statistics <${process.env.RESEND_FROM_EMAIL ?? 'hello@mdubusistats.com'}>`,
         to,
         replyTo: process.env.RESEND_REPLY_TO ?? undefined,
         subject: subjectFor(templateId, props),
@@ -49,9 +49,9 @@ export class ResendMailer implements IMailer {
 
 function subjectFor(id: string, props: Record<string, unknown>): string {
   switch (id) {
-    case 'welcome':                 return 'Welcome to Mdubusi Mathematics'
+    case 'welcome':                 return 'Welcome to Mdubusi Statistics'
     case 'booking-confirmation':    return `Booking Confirmed: ${props['subject'] ?? ''}`
     case 'tutor-new-booking-alert': return `New Booking: ${props['studentName'] ?? ''} — ${props['subject'] ?? ''}`
-    default:                        return 'Mdubusi Mathematics'
+    default:                        return 'Mdubusi Statistics'
   }
 }

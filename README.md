@@ -1,6 +1,6 @@
-# Mdubusi Mathematics
+# Mdubusi Statistics
 
-Expert mathematics tutoring platform for South African students — Grades 11, 12, and university level.
+Expert statistics tutoring platform for South African students — Grades 11, 12, and university level.
 
 Built with Next.js 14 App Router, Prisma + Neon PostgreSQL, NextAuth v5, Cal.com (scheduling + payments), and Resend (transactional email).
 

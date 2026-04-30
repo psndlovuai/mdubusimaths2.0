@@ -32,7 +32,7 @@ Times are measured in South African Standard Time (SAST, UTC+2).
 2. Find the upcoming session under **My Sessions**.
 3. Click **Cancel**. The cancellation takes effect immediately and you will receive a confirmation email.
 
-If the dashboard is unavailable, email [support@mdubusimaths.com] from the email address on your account. The cancellation takes effect at the time the email is received.
+If the dashboard is unavailable, email [support@mdubusistats.com] from the email address on your account. The cancellation takes effect at the time the email is received.
 
 ---
 
@@ -90,12 +90,12 @@ When a reschedule is permitted under this policy:
 
 ## 8. Exceptional circumstances
 
-We consider genuine hardship — serious illness, bereavement, a verified power or network outage at the time of the session — on a case-by-case basis. Contact [support@mdubusimaths.com] with a short explanation and any evidence you can provide. Granting a refund or free reschedule in an exceptional case is at our discretion and does not set a precedent.
+We consider genuine hardship — serious illness, bereavement, a verified power or network outage at the time of the session — on a case-by-case basis. Contact [support@mdubusistats.com] with a short explanation and any evidence you can provide. Granting a refund or free reschedule in an exceptional case is at our discretion and does not set a precedent.
 
 ---
 
 ## 9. Contact
 
-**Mdubusi Mathematics**
-Email: [support@mdubusimaths.com]
-Website: [https://mdubusimaths.com]
+**Mdubusi Statistics**
+Email: [support@mdubusistats.com]
+Website: [https://mdubusistats.com]

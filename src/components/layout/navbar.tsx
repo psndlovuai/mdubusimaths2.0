@@ -115,7 +115,7 @@ export function Navbar() {
           <Link
             href="/"
             className="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
-            aria-label="Mdubusi Mathematics — home"
+            aria-label="Mdubusi Statistics — home"
           >
             <Logo variant="on-dark" priority className="h-9 w-auto" />
           </Link>

@@ -7,7 +7,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="flex justify-center mb-8">
-          <Link href="/" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-md" aria-label="Mdubusi Mathematics — home">
+          <Link href="/" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-md" aria-label="Mdubusi Statistics — home">
             <Logo variant="on-light" className="h-12 w-auto" priority />
           </Link>
         </div>

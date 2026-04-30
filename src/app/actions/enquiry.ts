@@ -27,14 +27,14 @@ export async function submitEnquiry(
 
   try {
     await resend.emails.send({
-      from:    process.env.RESEND_FROM_EMAIL ?? 'hello@mdubusimaths.co.za',
-      to:      'info@mdubusimaths.com',
+      from:    process.env.RESEND_FROM_EMAIL ?? 'hello@mdubusistats.com',
+      to:      'info@mdubusistats.com',
       replyTo: email,
       subject: `Enquiry: ${subject}`,
       html: `
         <div style="font-family:system-ui,sans-serif;max-width:600px;margin:0 auto">
           <div style="background:#1B3A6B;padding:24px 32px;border-radius:12px 12px 0 0">
-            <p style="color:#fff;font-weight:700;font-size:18px;margin:0">Mdubusi Mathematics</p>
+            <p style="color:#fff;font-weight:700;font-size:18px;margin:0">Mdubusi Statistics</p>
             <p style="color:rgba(255,255,255,0.5);font-size:12px;margin:4px 0 0">New website enquiry</p>
           </div>
           <div style="background:#fff;padding:32px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 12px 12px">

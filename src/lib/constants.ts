@@ -25,8 +25,8 @@ export const SESSION_DURATIONS: Record<string, number> = {
 
 // ─── Brand ───────────────────────────────────────────────────────────────────
 export const TUTOR_NAME     = 'PS Ndlovu'
-export const BRAND_NAME     = 'Mdubusi Mathematics'
-export const SUPPORT_EMAIL  = 'support@mdubusimaths.co.za'
+export const BRAND_NAME     = 'Mdubusi Statistics'
+export const SUPPORT_EMAIL  = 'support@mdubusistats.com'
 
 // ─── Social links ────────────────────────────────────────────────────────────
 export const SOCIAL_LINKS = {
