@@ -17,31 +17,31 @@ export function TutorSpotlight() {
           </h2>
 
           <p className="text-muted-foreground text-sm mb-8">
-            BSc Mathematics (cum laude) · PGCE Education · 5+ years private tutoring
+            BSc Statistics (cum laude) · PGCE Education · 5+ years private tutoring
           </p>
 
           <blockquote className="border-l-4 border-gold pl-5 mb-8">
             <p className="text-ink text-xl leading-relaxed italic">
-              &ldquo;Mathematics is not about memorising formulas — it&apos;s about developing
-              logical thinking and problem-solving skills that last a lifetime.&rdquo;
+              &ldquo;Statistics is not about memorising formulas — it&apos;s about learning
+              to reason with data and draw meaningful conclusions from the world around you.&rdquo;
             </p>
           </blockquote>
 
           <div className="space-y-4 text-muted-foreground text-[15px] leading-relaxed mb-8">
             <p>
-              With a passion for making mathematics accessible, {TUTOR_NAME} specialises
+              With a passion for making statistics accessible, {TUTOR_NAME} specialises
               in breaking down complex concepts into clear, manageable steps. Every
               student learns differently, and sessions are tailored to meet each
               student&apos;s unique pace and learning style.
             </p>
             <p>
-              From high school algebra to university-level calculus, the focus is always
+              From descriptive statistics to advanced inference, the focus is always
               on deep understanding — not just passing the next test.
             </p>
           </div>
 
           <div className="flex flex-wrap gap-3">
-            {['Grade 11 & 12', 'University Maths', 'Exam Preparation', 'Statistics', 'Calculus'].map(tag => (
+            {['Grade 11 & 12', 'University Stats', 'Exam Preparation', 'Regression & ANOVA', 'R · SPSS · Python'].map(tag => (
               <span
                 key={tag}
                 className="text-xs font-medium bg-navy/10 text-navy px-3 py-1.5 rounded-full border border-navy/10"

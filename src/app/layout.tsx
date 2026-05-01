@@ -32,12 +32,12 @@ export const metadata: Metadata = {
     default: BRAND_NAME,
     template: `%s | ${BRAND_NAME}`,
   },
-  description: 'Expert mathematics tutoring for South African students — Grades 11, 12, and university level.',
+  description: 'Expert statistics tutoring for South African students — Grades 11, 12, and university level.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'),
   icons: { icon: '/favicon.svg' },
   openGraph: {
     title: BRAND_NAME,
-    description: 'Expert mathematics tutoring for South African students.',
+    description: 'Expert statistics tutoring for South African students.',
     images: ['/og-image.png'],
   },
 }

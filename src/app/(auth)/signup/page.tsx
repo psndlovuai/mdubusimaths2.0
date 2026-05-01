@@ -74,7 +74,7 @@ export default function SignupPage() {
   return (
     <>
       <h1 className="font-display text-3xl font-medium text-navy mb-1">Create an account</h1>
-      <p className="text-muted-foreground text-sm mb-6">Start your mathematics journey today</p>
+      <p className="text-muted-foreground text-sm mb-6">Start your statistics journey today</p>
 
       {/* Google OAuth */}
       <button
@@ -162,7 +162,7 @@ export default function SignupPage() {
             <label htmlFor="subjects" className="block text-sm font-medium text-ink mb-1.5">
               Subjects you need help with <span className="font-normal text-muted-foreground">(optional)</span>
             </label>
-            <input id="subjects" type="text" placeholder="e.g. Mathematics, Physical Sciences, Calculus"
+            <input id="subjects" type="text" placeholder="e.g. Statistics, Probability, Data Analysis"
               className={inputCls} {...register('subjects')} />
           </div>
         </div>

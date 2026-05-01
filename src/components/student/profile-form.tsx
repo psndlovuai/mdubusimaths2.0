@@ -16,15 +16,15 @@ const ACADEMIC_LEVELS = [
 ]
 
 const COMMON_SUBJECTS = [
-  'Mathematics',
-  'Physical Sciences',
-  'Mathematical Literacy',
-  'Accounting',
-  'Economics',
-  'Engineering Mathematics',
-  'Calculus',
   'Statistics',
-  'Applied Mathematics',
+  'Probability',
+  'Data Analysis',
+  'Descriptive Statistics',
+  'Regression Analysis',
+  'Hypothesis Testing',
+  'ANOVA',
+  'R Programming',
+  'SPSS',
 ]
 
 const schema = z.object({
@@ -213,7 +213,7 @@ export function ProfileForm({ defaultValues }: ProfileFormProps) {
             <input
               id="subjects"
               type="text"
-              placeholder="e.g. Mathematics, Physical Sciences, Calculus"
+              placeholder="e.g. Statistics, Probability, Data Analysis"
               className={inputCls}
               {...register('subjects')}
             />

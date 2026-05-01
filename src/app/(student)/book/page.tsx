@@ -197,7 +197,7 @@ function StepSubject({ sessionType, onNext, onBack }: {
             type="text"
             value={subject}
             onChange={e => setSubject(e.target.value)}
-            placeholder={isMeetGreet ? 'e.g. Grade 12 Mathematics, First-year Calculus' : 'e.g. Mathematics, Physical Sciences'}
+            placeholder={isMeetGreet ? 'e.g. Grade 12 Statistics, First-year Data Analysis' : 'e.g. Statistics, Probability, Data Analysis'}
             className="w-full border border-border rounded-xl px-4 py-3 text-sm text-ink placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold min-h-[44px]"
           />
         </div>
@@ -212,7 +212,7 @@ function StepSubject({ sessionType, onNext, onBack }: {
             type="text"
             value={topic}
             onChange={e => setTopic(e.target.value)}
-            placeholder={isMeetGreet ? 'e.g. Struggling with calculus before finals' : 'e.g. Calculus, Algebra, Trigonometry'}
+            placeholder={isMeetGreet ? 'e.g. Struggling with regression before finals' : 'e.g. Hypothesis Testing, Regression, ANOVA'}
             className="w-full border border-border rounded-xl px-4 py-3 text-sm text-ink placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold min-h-[44px]"
           />
         </div>
@@ -245,7 +245,7 @@ function StepCalendar({ sessionType, subject, topic, userName, userEmail, onBack
   onBack:      () => void
 }) {
   const slug    = TYPE_SLUGS[sessionType] ?? 'once-off-60min'
-  const calUser = process.env.NEXT_PUBLIC_CAL_USERNAME ?? 'ps.ndlovu_mdubusimaths'
+  const calUser = process.env.NEXT_PUBLIC_CAL_USERNAME ?? 'ps.ndlovu_mdubusistats'
   const calLink = `${calUser}/${slug}`
   const isFree  = sessionType === 'meet_greet'
 

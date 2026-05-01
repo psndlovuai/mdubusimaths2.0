@@ -24,7 +24,7 @@ export function WelcomeEmail({
               {BRAND_NAME}
             </Text>
             <Text style={{ color: 'rgba(255,255,255,0.55)', fontSize: 12, margin: '2px 0 0' }}>
-              Expert Mathematics Tutoring · South Africa
+              Expert Statistics Tutoring · South Africa
             </Text>
           </Section>
 
@@ -34,8 +34,8 @@ export function WelcomeEmail({
               Welcome aboard, {studentName}!
             </Heading>
             <Text style={{ color: '#3D3D3D', fontSize: 16, lineHeight: 1.65, margin: '0 0 14px' }}>
-              Hi {studentName}, I&apos;m {TUTOR_NAME} and I&apos;m excited to help you master Mathematics.
-              Whether you&apos;re tackling Grade 11 or 12 finals, or pushing through university-level courses,
+              Hi {studentName}, I&apos;m {TUTOR_NAME} and I&apos;m excited to help you master statistics.
+              Whether you&apos;re tackling Grade 11 or 12 finals, or working through university-level courses,
               you&apos;re in the right place.
             </Text>
             <Text style={{ color: '#3D3D3D', fontSize: 16, lineHeight: 1.65, margin: '0 0 28px' }}>

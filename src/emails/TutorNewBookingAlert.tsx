@@ -18,7 +18,7 @@ export function TutorNewBookingAlert({
   studentName = 'Student',
   studentEmail = '',
   studentPhone = null,
-  subject = 'Mathematics',
+  subject = 'Statistics',
   topic = null,
   sessionType = 'Once-off (60 min)',
   startTime = '',

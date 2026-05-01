@@ -2,7 +2,7 @@
   <title>Mdubusi Statistics</title>
   <!-- Navy badge -->
   <circle cx="60" cy="60" r="56" fill="#1B3A6B"/>
-  <!-- Gold mathematical bar (M̄) -->
+  <!-- Gold mathematical bar (M̄ — denotes the mean of M, a core statistics symbol) -->
   <line x1="34" y1="30" x2="86" y2="30" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/>
   <!-- Warm-white M, stroked for refined serif feel -->
   <path d="M 30 90 L 30 40 L 60 74 L 90 40 L 90 90"

@@ -19,7 +19,7 @@ If you are under 18, you may only use the Platform with the consent and under th
 
 ## 2. The services we provide
 
-We provide online one-on-one and group tutoring in mathematics, statistics, data analytics, and related subjects for university and post-graduate students. Sessions are delivered over video conferencing provided by a third party (e.g. Google Meet, Zoom) at a scheduled time agreed between the Student and the tutor.
+We provide online one-on-one and group tutoring in statistics, data analytics, and related quantitative subjects for school and university students. Sessions are delivered over video conferencing provided by a third party (e.g. Google Meet, Zoom) at a scheduled time agreed between the Student and the tutor.
 
 We do **not** provide formal qualifications, accreditation, or guarantees of academic outcome. Success depends on the Student's preparation, engagement, and institution's assessment standards.
 

@@ -12,9 +12,9 @@ const SUBJECTS = [
   'Once-off / Exam Prep Session',
   'Group Session',
   'Monthly Package',
-  'Grade 11 Mathematics',
-  'Grade 12 Mathematics',
-  'University Mathematics',
+  'Grade 11 Statistics',
+  'Grade 12 Statistics',
+  'University Statistics',
   'Pricing & Packages',
   'Other',
 ]

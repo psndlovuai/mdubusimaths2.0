@@ -28,7 +28,7 @@ const FAQS = [
   },
   {
     question: 'What subjects and levels do you cover?',
-    answer:   'We specialise in Mathematics at all levels — Grade 11 and 12 (CAPS curriculum), and university-level maths including calculus, linear algebra, probability and statistics, and differential equations. If you\'re unsure whether your level or topic is covered, start with a free Meet & Greet.',
+    answer:   'We specialise in Statistics at all levels — Grade 11 and 12 (CAPS curriculum), and university-level statistics including descriptive statistics, probability, regression analysis, hypothesis testing, ANOVA, and data analysis using R, SPSS, and Python. If you\'re unsure whether your level or topic is covered, start with a free Meet & Greet.',
   },
   {
     question: 'How do group sessions work?',

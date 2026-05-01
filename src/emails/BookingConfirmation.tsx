@@ -15,7 +15,7 @@ interface BookingConfirmationProps {
 
 export function BookingConfirmation({
   studentName = 'Student',
-  subject = 'Mathematics',
+  subject = 'Statistics',
   topic = null,
   sessionType = 'Once-off (60 min)',
   startTime = '',
@@ -50,7 +50,7 @@ export function BookingConfirmation({
               {BRAND_NAME}
             </Text>
             <Text style={{ color: 'rgba(255,255,255,0.55)', fontSize: 12, margin: '2px 0 0' }}>
-              Expert Mathematics Tutoring · South Africa
+              Expert Statistics Tutoring · South Africa
             </Text>
           </Section>
 

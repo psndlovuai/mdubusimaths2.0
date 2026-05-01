@@ -61,7 +61,7 @@ export function Hero() {
             <div className="flex items-center gap-3 mb-5">
               <span className="w-8 h-0.5 bg-gold" />
               <span className="text-gold text-xs font-semibold tracking-[0.2em] uppercase">
-                Mathematics Tutor &amp; Mentor
+                Statistics Tutor &amp; Mentor
               </span>
             </div>
 
@@ -72,9 +72,9 @@ export function Hero() {
             </h1>
 
             <p className="text-white/65 text-lg leading-relaxed max-w-lg mb-8">
-              Passionate mathematics tutor dedicated to helping students unlock their
-              full potential. From high school to university level, I make complex
-              mathematical concepts simple and accessible.
+              Passionate statistics tutor dedicated to helping students navigate data,
+              probability, and inference with confidence. From high school to university
+              level, I make complex statistical concepts clear and accessible.
             </p>
 
             {/* CTAs */}

@@ -51,7 +51,7 @@ src/
 ```bash
 # 1. Clone and install
 git clone <repo-url>
-cd mdubusi-maths
+cd mdubusi-stats
 npm install
 
 # 2. Copy env file and fill in your values

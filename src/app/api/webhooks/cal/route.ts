@@ -89,7 +89,7 @@ export async function POST(req: Request) {
       attendeeName:   attendee.name,
       eventTypeSlug,
       studentId:      student.id,
-      subject:        responses['subject']?.value  ?? 'Mathematics',
+      subject:        responses['subject']?.value  ?? 'Statistics',
       topic:          responses['topic']?.value    ?? null,
     })
 

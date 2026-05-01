@@ -5,7 +5,7 @@ const SERVICES = [
   {
     icon:        User,
     title:       'Private Tutoring',
-    description: 'One-on-one personalised sessions tailored to your learning pace, covering any mathematics topic from Grade 11 to university level.',
+    description: 'One-on-one personalised sessions tailored to your learning pace, covering statistics from descriptive analysis to advanced inference — Grade 11 to university level.',
     delay:       0,
   },
   {
